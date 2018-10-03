@@ -5,9 +5,14 @@
  * Date: 03/10/18
  * Time: 11:29
  */
-require ConnextionBD();
-
+require "ConnexionBD.php";
 function isConnect( $user, $pass)
 {
-    ConnextionBD();
+    $bdd = getConnextionBD();
+    $sql =  'SELECT * FROM USER ';
+    foreach ($bdd-> query($sql) as $row)
+    {
+        print $row['id']."\t";
+        print $row['name']."\t";
+    }
 }

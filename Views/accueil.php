@@ -6,5 +6,6 @@
  * Time: 09:45
  */
 
-require "../Modeles/ConnexionBD.php";
-ConnextionBD();
+//require "../Modeles/ConnexionBD.php";
+require "../Modeles/GestionUser.php";
+isConnect("root","root");

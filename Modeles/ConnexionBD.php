@@ -18,4 +18,16 @@ function ConnextionBD()
         die('Erreur Coonnextion BD : ' . $e->getMessage());
     }
 }
+function getConnextionBD()
+{
+    $host = 'mysql-tristan-info.alwaysdata.net';
+    $baseName = 'tristan-info_root';
+    $user = '167519';
+    $mdp = 'root';
+    try {
+        return new PDO('mysql:host=mysql-tristan-info.alwaysdata.net;dbname=tristan-info_root', '167519', 'root');
+    } catch (Exception $e) {
+        die('Erreur Coonnextion BD : ' . $e->getMessage());
+    }
+}
 ?>
