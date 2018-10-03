@@ -7,5 +7,15 @@
  */
 
 //require "../Modeles/ConnexionBD.php";
+
 require "../Modeles/GestionUser.php";
-isConnect("root","root");
+echo 'I"m alive';
+foreach (getUserById(1)as $row)
+{
+    echo 'test';
+}
+foreach (getUserByNameAndPassword("root","root")as $row)
+{
+    echo '<br/><br/>JE SUIS CONNECTER';
+}
+

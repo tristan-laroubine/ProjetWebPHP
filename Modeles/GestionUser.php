@@ -6,13 +6,17 @@
  * Time: 11:29
  */
 require "ConnexionBD.php";
-function isConnect( $user, $pass)
+function getUserById($id)
 {
     $bdd = getConnextionBD();
-    $sql =  'SELECT * FROM USER ';
-    foreach ($bdd-> query($sql) as $row)
-    {
-        print $row['id']."\t";
-        print $row['name']."\t";
-    }
+    $sql =  'SELECT * FROM USER WHERE id='.$id.';';
+    return $bdd-> query($sql);
+}
+
+
+function getUserByNameAndPassword($name, $password)
+{
+    $bdd = getConnextionBD();
+    $sql =  'SELECT * FROM USER WHERE name= "'.$name.'" AND mdp = "'.$password.'";';
+    return $bdd-> query($sql);
 }
