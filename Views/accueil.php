@@ -19,3 +19,9 @@ foreach (getUserByNameAndPassword("root","root")as $row)
     echo '<br/><br/>JE SUIS CONNECTER';
 }
 
+echo 'Grade : '.intIsConnect("root","root");
+addUser("test","test",1,"test","test");
+foreach (getUserById(2)as $row)
+{
+    echo 'test';
+}
