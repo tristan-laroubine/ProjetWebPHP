@@ -9,19 +9,36 @@
 //require "../Modeles/ConnexionBD.php";
 
 require "../Modeles/GestionUser.php";
-echo 'I"m alive';
-foreach (getUserById(1)as $row)
-{
-    echo 'test';
-}
+
+//addUser("test","test","50","tzetez","treet");
+$resulte = getUserById(1);
+
+echo 'ID : '.getIdByRequest($resulte)."\t";
+echo '| Name : '.getNameByRequest($resulte)."\t";
+echo '| Mdp : '.getMdpByRequest($resulte)."\t";
+echo '| Grade : '.getGradeByRequest($resulte)."\t";
+echo '| email : '.getEmailByRequest($resulte)."\t";
+echo '| recup : '.getRecupByRequest($resulte)."\t";
+
+//echo 'I"m alive';
+//foreach (getUserById(1)as $row)
+//{
+//    echo 'test';
+//}
 foreach (getUserByNameAndPassword("root","root")as $row)
 {
     echo '<br/><br/>JE SUIS CONNECTER';
 }
 
-echo 'Grade : '.intIsConnect("root","root");
-addUser("test","test",1,"test","test");
+
+echo '<br>Grade : '.intIsConnect("root","root");
+
+
+
 foreach (getUserById(2)as $row)
 {
-    echo 'test';
+    echo '<br/>test';
 }
+
+setIdById('fzerfez',2);
+
