@@ -133,12 +133,76 @@ function addUser($name, $mdp, $grade, $email, $recup)
  * @param $idOld ancien ID
  * @param $idNew Nouveau ID
  */
-function setName($id ,$name)
+function setIdById($idOld ,$idNew)
 {
     $bdd = getConnextionBD();
-    $requete = 'UPDATE USER SET name=? WHERE id=?';
-    $sql =  $bdd -> prepare ($requete);
-    $sql->bindValue( 1 , $id );
+    $sql =  $bdd -> prepare ('UPDATE USER SET id=? WHERE id=?');
+    $sql->bindValue( 2 , $idOld );
+    $sql->bindValue( 1 , $idNew);
+    $sql->execute();
+}
+
+/**Change le name de l'utilisateur en fonction de son id
+ * @param $idOld ancien ID
+ * @param $idNew Nouveau ID
+ */
+function setNameById($id ,$name)
+{
+    $bdd = getConnextionBD();
+    $sql =  $bdd -> prepare ('UPDATE USER SET name=? WHERE id=?');
     $sql->bindValue( 1 , $name );
+    $sql->bindValue( 2 , $id );
+    $sql->execute();
+}
+
+/**Change le MDP de l'utilisateur en fonction de son id
+ * @param $id id de l'utilisateur concerner
+ * @param $mdp le nouveaux mots de passe
+ */
+function setMdpById($id ,$mdp)
+{
+    $bdd = getConnextionBD();
+    $sql =  $bdd -> prepare ('UPDATE USER SET mdp=? WHERE id=?');
+    $sql->bindValue( 1 , $mdp );
+    $sql->bindValue( 2 , $id );
+    $sql->execute();
+}
+
+/**Change le Grade de l'utilisateur en fonction de son id
+ * @param $id id de l'utilisateur concerner
+ * @param $grade le nouveaux grade
+ */
+function setGradeById($id ,$grade)
+{
+    $bdd = getConnextionBD();
+    $sql =  $bdd -> prepare ('UPDATE USER SET grade=? WHERE id=?');
+    $sql->bindValue( 1 , $grade );
+    $sql->bindValue( 2 , $id );
+    $sql->execute();
+}
+
+/**Change le email de l'utilisateur en fonction de son id
+ * @param $id id de l'utilisateur concerner
+ * @param $email la nouvelle email
+ */
+function setEmailById($id ,$email)
+{
+    $bdd = getConnextionBD();
+    $sql =  $bdd -> prepare ('UPDATE USER SET email=? WHERE id=?');
+    $sql->bindValue( 1 , $email );
+    $sql->bindValue( 2 , $id );
+    $sql->execute();
+}
+
+/**Change le recup de l'utilisateur en fonction de son id
+ * @param $id id de l'utilisateur concerner
+ * @param $grade le nouveaux recup
+ */
+function setRecupById($id ,$recup)
+{
+    $bdd = getConnextionBD();
+    $sql =  $bdd -> prepare ('UPDATE USER SET recup=? WHERE id=?');
+    $sql->bindValue( 1 , $recup );
+    $sql->bindValue( 2 , $id );
     $sql->execute();
 }

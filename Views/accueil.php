@@ -11,6 +11,9 @@
 require "../Modeles/GestionUser.php";
 
 //addUser("test","test","50","tzetez","treet");
+
+
+
 $resulte = getUserById(1);
 
 echo 'ID : '.getIdByRequest($resulte)."\t";
@@ -40,5 +43,4 @@ foreach (getUserById(2)as $row)
     echo '<br/>test';
 }
 
-setIdById('fzerfez',2);
 
