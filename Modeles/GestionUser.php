@@ -206,3 +206,8 @@ function setRecupById($id ,$recup)
     $sql->bindValue( 2 , $id );
     $sql->execute();
 }
+
+function RecupMdpWithEmail($email)
+{
+
+}

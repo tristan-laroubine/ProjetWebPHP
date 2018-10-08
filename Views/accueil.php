@@ -14,7 +14,7 @@ require "../Modeles/GestionUser.php";
 
 
 
-$resulte = getUserById(1);
+$resulte = getUserById(2);
 
 echo 'ID : '.getIdByRequest($resulte)."\t";
 echo '| Name : '.getNameByRequest($resulte)."\t";
@@ -23,11 +23,7 @@ echo '| Grade : '.getGradeByRequest($resulte)."\t";
 echo '| email : '.getEmailByRequest($resulte)."\t";
 echo '| recup : '.getRecupByRequest($resulte)."\t";
 
-//echo 'I"m alive';
-//foreach (getUserById(1)as $row)
-//{
-//    echo 'test';
-//}
+
 foreach (getUserByNameAndPassword("root","root")as $row)
 {
     echo '<br/><br/>JE SUIS CONNECTER';
@@ -42,5 +38,4 @@ foreach (getUserById(2)as $row)
 {
     echo '<br/>test';
 }
-
 
