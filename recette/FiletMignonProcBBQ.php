@@ -14,7 +14,7 @@
     <li>1 ou 2 filets mignon de porc de 350 à 400 g chacun</li>
     <li>1 verre de jus d’orange</li>
     <li>1 verre de sauce soja</li>
-    <li>1 verre de sauce Worcestershire</li>
+    <li>1 verre de sauce Worcestershire</li>ve
 </ul>
 
 <h2>Préparation</h2>

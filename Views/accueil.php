@@ -39,3 +39,5 @@ foreach (getUserById(2)as $row)
     echo '<br/>test';
 }
 
+//RecupMdpWithEmail('tristan.LAROUBINE@etu.univ-amu.fr');
+

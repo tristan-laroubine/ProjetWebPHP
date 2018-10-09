@@ -210,4 +210,49 @@ function setRecupById($id ,$recup)
 function RecupMdpWithEmail($email)
 {
 
+     // Plusieurs destinataires
+     $to  = 'tristan.LAROUBINE@etu.univ-amu.fr'; // notez la virgule
+
+     // Sujet
+     $subject = 'Calendrier des anniversaires pour Août';
+
+     // message
+     $message ='
+     <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        h1{
+            text-align: center;
+            color: #0D3349;
+        }
+    </style>
+    <title>Test</title>
+</head>
+<body>
+    <h1> Cook & Burn : Changement de mots de passe</h1>
+    <p>Bonjour $name, <br/>
+    Suite à votre demande de changement de mots de passe voici le nouveau mots de passe.<br/>
+    Vous pourrez par la suite modifier celui ci dans votre page personelle</p>
+<h2>FZEJPOFJOPFZE</h2>
+    <a herf="#">Cook & Burn</a>
+</body>
+</html>
+     ';
+
+     // Pour envoyer un mail HTML, l'en-tête Content-type doit être défini
+     $headers[] = 'MIME-Version: 1.0';
+     $headers[] = 'Content-type: text/html; charset=iso-8859-1';
+
+     // En-têtes additionnels
+     $headers[] = 'To: Mary <mary@example.com>, Kelly <kelly@example.com>';
+     $headers[] = 'From: Anniversaire <anniversaire@example.com>';
+     $headers[] = 'Cc: anniversaire_archive@example.com';
+     $headers[] = 'Bcc: anniversaire_verif@example.com';
+
+     // Envoi
+     mail($to, $subject, $message, implode("\r\n", $headers));
+     echo "test";
+
 }
