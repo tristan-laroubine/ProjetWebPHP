@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <link href="bootstrap-4.1.3-dist/css/bootstrap.css" rel="stylesheet">
+    <link href="../bootstrap-4.1.3/css/bootstrap.css" rel="stylesheet">
     <link href="../src/css/base.css" rel="stylesheet">
     <title>ok</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -30,7 +30,7 @@
                     Favoris
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="toto">Action</a>
+                    <a class="dropdown-item" href="/toto">Action</a>
                     <a class="dropdown-item" href="#">Another action</a>
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="#">Something else here</a>

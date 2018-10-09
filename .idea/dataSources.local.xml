@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="dataSourceStorageLocal">
+    <data-source name="tristan-info_root@mysql-tristan-info.alwaysdata.net" uuid="3cce065b-db0a-4d19-a9bd-6df7e8e819ce">
+      <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" family="MYSQL" exact-version="0.0" />
+      <secret-storage>master_key</secret-storage>
+      <first-sync>true</first-sync>
+      <user-name>167519</user-name>
+    </data-source>
+  </component>
+</project>
