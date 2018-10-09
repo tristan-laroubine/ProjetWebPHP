@@ -23,11 +23,13 @@ class Rooter
 			//LE CONTROLER EST INCLUS SELON L'ACTION DE L'UTILISATEUR
 			if(!is_null($url))
 			{
+
                 $url = explode('/', $url);
 
 				$controller = ucfirst($url[0]);
 				$controlerClass = "Controller".$controller;
-				$controllerFile = 	"controler/".$controlerClass.".php";
+				$controllerFile = 	"Controleurs/".$controlerClass.".php";
+
 
 				if(file_exists($controllerFile))
 				{
@@ -36,8 +38,6 @@ class Rooter
 				}
 				else
                 {
-
-
 					throw new Exception('Page introuvable ' . $controllerFile .' ');
                 }
 			}
