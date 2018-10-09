@@ -17,7 +17,7 @@ function getUserById($id)
     $sql =  $bdd -> prepare ('SELECT * FROM USER WHERE id = ?;');
     $sql->bindValue( 1 , $id , PDO::PARAM_INT);
     $sql->execute();
-    return $sql->fetchAll();
+    return $sql->fetch();
 }
 
 /** getUserByNameAndPassword retourn un cursor si le combo id et mdp est juste.

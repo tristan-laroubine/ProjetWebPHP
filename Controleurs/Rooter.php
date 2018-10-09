@@ -11,20 +11,19 @@ class Rooter
 			//CHARGEMENT AUTOMATIQUE DES CLASSES
 			spl_autoload_register(function($class){
 			    if(strpos($class, "Controller") === true)
-			        require_once ('controler/'.$class.'.php');
-			    else if(strpos($class,"Captcha") == true) {
-                    $class = str_replace('\\', '/', $class);
-                    require_once('model/reCaptcha/' . $class . '.php');
-                }
+			        require_once ('Controleurs/'.$class.'.php');
 			    else
-				    require_once('model/'.$class.'.php');
+				    require_once('Modeles/'.$class.'.php');
 			});
-			$url='';
+
+			$url = filter_input(INPUT_GET,'url',FILTER_SANITIZE_URL);
+//			var_dump($url);
+//			die;
 
 			//LE CONTROLER EST INCLUS SELON L'ACTION DE L'UTILISATEUR
-			if(isset($_GET['url']))
+			if(!is_null($url))
 			{
-				$url = explode('/', filter_var($_GET['url'],	FILTER_SANITIZE_URL));
+                $url = explode('/', $url);
 
 				$controller = ucfirst($url[0]);
 				$controlerClass = "Controller".$controller;
@@ -36,20 +35,23 @@ class Rooter
 					$this->_ctrl = new $controlerClass($url);
 				}
 				else
-					throw new Exception('Page introuvable ' . $controllerFile .
-					' ');
+                {
+
+
+					throw new Exception('Page introuvable ' . $controllerFile .' ');
+                }
 			}
 			else
 			{
-				require_once('controler/ControllerIndex.php');
-				$this->_ctrl = new ControllerIndex($url);
+				require_once('Controleurs/ControllerIndex.php');
+				$this->_ctrl = new ControllerIndex();
 			}
 		}
 		//GESTION DES EXCEPTIONS
 		catch(Exception $e)
 		{
 			$errorMsg = $e->getMessage();
-			require_once('view/viewError.php');
+			require_once('Views/viewError.php');
 		}
 	}
 }

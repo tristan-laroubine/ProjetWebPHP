@@ -9,6 +9,7 @@
 //require "../Modeles/ConnexionBD.php";
 
 require "../Modeles/GestionUser.php";
+//require_once "../Modeles/GestionRecette.php";
 
 //addUser("test","test","50","tzetez","treet");
 
@@ -16,7 +17,7 @@ require "../Modeles/GestionUser.php";
 
 $resulte = getUserById(2);
 
-echo 'ID : '.getIdByRequest($resulte)."\t";
+echo 'ID : '.$resulte['id']."\t";
 echo '| Name : '.getNameByRequest($resulte)."\t";
 echo '| Mdp : '.getMdpByRequest($resulte)."\t";
 echo '| Grade : '.getGradeByRequest($resulte)."\t";
@@ -38,6 +39,7 @@ foreach (getUserById(2)as $row)
 {
     echo '<br/>test';
 }
+
 
 //RecupMdpWithEmail('tristan.LAROUBINE@etu.univ-amu.fr');
 

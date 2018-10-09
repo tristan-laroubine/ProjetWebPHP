@@ -1,11 +1,11 @@
 <?php
-require_once('view/View.php');
+require_once('Views/View.php');
 class ControllerIndex
 {
 	private $_recetteModel;
 	private $_view;
 
-	public function __construct($url)
+	public function __construct($url = null)
 	{
 	//1 car un seul parametre dans l'URL, dans l'accueil, seulement pour charger le controller
 		if(isset($url) && count($url) > 1)
@@ -16,10 +16,7 @@ class ControllerIndex
 
 	private function recette()
 	{
-		$this->_recetteModel = new TopRecetteModel();
-		$recette = $this->_recetteModel->getRecettes();
-
 		$this->_view = new View('Index');
-		$this->_view->generate(array('recette' => $recette));
+        $this->_view->generate(array('recette' => 'coucou'));
 	}
 }

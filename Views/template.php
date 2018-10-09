@@ -43,7 +43,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         <div class="container">
             <div class="header">
                 <div class="logo">
-                    <h1><a href="index">Cook And Burn</a></h1>
+                    <h1><a href="../index.php">Cook And Burn</a></h1>
                 </div>
             <?php
             if(isset($_SESSION['pseudo']))
@@ -55,10 +55,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         <!-- Collect the nav links, forms, and other content for toggling -->
                         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                             <ul class="nav navbar-nav">
-                                <li><a class="<?php if($t == "Cook And Burn") echo "active";?>" href="index">Accueil</a></li>
-                                <li><a class="<?php if($t == "Profil") echo "active";?>" href="profil">Mon profil</a></li>
-                                <li><a class="<?php if($t == "Création recette") echo "active";?>"href="creationRecette">Créer une recette</a></li>
-                                <li><a href="contact.html">Contact</a></li>
+                                <li><a class="<?php if($t == "Cook And Burn") echo "active";?>" href="../index.php">Accueil</a></li>
+                                <li><a class="<?php if($t == "Profil") echo "active";?>" href="../index.php">Mon profil</a></li>
+                                <li><a class="<?php if($t == "Création recette") echo "active";?>"href="../index.php">Créer une recette</a></li>
+                                <li><a href="../index.php">Contact</a></li>
                                 <div class="clearfix"> </div>
                             </ul>
                         </div>
@@ -76,11 +76,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         <!-- Collect the nav links, forms, and other content for toggling -->
                         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                             <ul class="nav navbar-nav">
-                                <li><a class="<?php if($t == "Cook And Burn") echo "active";?>" href="index">Accueil</a></li>
-                                <li><a class="<?php if($t == "Inscription") echo "active";?>" href="SignUp">Inscription</a></li>
-                                <li><a class="<?php if($t == "Connexion") echo "active";?>" href="Connexion">Connexion</a></li>
-                                <li><a href="news.html">News & Events</a></li>
-                                <li><a href="contact.html">Contact</a></li>
+                                <li><a class="<?php if($t == "Cook And Burn") echo "active";?>" href="../index.php">Accueil</a></li>
+                                <li><a class="<?php if($t == "Inscription") echo "active";?>" href="../index.php">Inscription</a></li>
+                                <li><a class="<?php if($t == "Connexion") echo "active";?>" href="../index.php">Connexion</a></li>
+                                <li><a href="../index.php">News & Events</a></li>
+                                <li><a href="../index.php">Contact</a></li>
                                 <div class="clearfix"> </div>
                             </ul>
                         </div>
@@ -124,11 +124,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <div class="container">
         <div class="w3agile-list">
             <ul>
-                <li><a href="about.html">About</a></li>
-                <li><a href="menu.html">Menu</a></li>
-                <li><a href="codes.html">Codes</a></li>
-                <li><a href="news.html">News & Events</a></li>
-                <li><a href="contact.html">Contact</a></li>
+                <li><a href="../index.php">About</a></li>
+                <li><a href="../index.php">Menu</a></li>
+                <li><a href="../index.php">Codes</a></li>
+                <li><a href="../index.php">News & Events</a></li>
+                <li><a href="../index.php">Contact</a></li>
             </ul>
         </div>
         <div class="agileinfo">

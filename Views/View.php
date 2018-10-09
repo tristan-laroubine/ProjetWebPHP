@@ -6,7 +6,8 @@ class view
 
     public function __construct($action)
     {
-        $this->_file='view/view'.$action.'.php';
+        $this->_file='Views/view'.$action.'.php';
+
 
     }
     //generation et affichage de la vue
@@ -17,9 +18,9 @@ class view
         $content = $this->generateFile($this->_file,$data);
 
         // template
-        $view = $this->generateFile('view/template.php', array('t' => $this->_t, 'content' => $content));
-
+        $view = $this->generateFile('Views/template.php', array('t' => $this->_t, 'content' => $content));
         echo $view;
+
     }
 
     //generation d'un fichier vu et renvoie le resultat produit
