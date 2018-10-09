@@ -149,14 +149,15 @@ class GestionUser
     }
 
 
-    public function RecupMdpWithEmail($email)
+    public function RecupMdpWithEmail($id)
     {
-
+        $newmdp = uniqid ("" ,false);
 // Plusieurs destinataires
-        $to  = $email; // notez la virgule
+        $user = self::getUserById($id);
+        $to  = $user['email']; // notez la virgule
 
 // Sujet
-        $subject = 'Calendrier des anniversaires pour Août';
+        $subject = 'Réinitialisation du mots de passe';
 
 // message
         $message ='
@@ -170,32 +171,28 @@ class GestionUser
             color: #0D3349;
         }
     </style>
-    <title>Test</title>
 </head>
 <body>
 <h1> Cook & Burn : Changement de mots de passe</h1>
-<p>Bonjour $name, <br/>
+<p>Bonjour '.$user['name'].', <br/>
     Suite à votre demande de changement de mots de passe voici le nouveau mots de passe.<br/>
     Vous pourrez par la suite modifier celui ci dans votre page personelle</p>
-<h2>FZEJPOFJOPFZE</h2>
+ 
+<h2>'.$newmdp.'</h2>
 <a herf="#">Cook & Burn</a>
 </body>
 </html>
 ';
-
+        self::setMdpById($id,$newmdp);
 // Pour envoyer un mail HTML, l'en-tête Content-type doit être défini
         $headers[] = 'MIME-Version: 1.0';
-        $headers[] = 'Content-type: text/html; charset=iso-8859-1';
+        $headers[] = 'Content-type: text/html; charset= utf8\n';
 
 // En-têtes additionnels
-        $headers[] = 'To: Mary <mary@example.com>, Kelly <kelly@example.com>';
-        $headers[] = 'From: Anniversaire <anniversaire@example.com>';
-        $headers[] = 'Cc: anniversaire_archive@example.com';
-        $headers[] = 'Bcc: anniversaire_verif@example.com';
-
+        $headers[] = 'From: Cook & Burn < noreply@cook&burn.fr >';
 // Envoi
         mail($to, $subject, $message, implode("\r\n", $headers));
-        echo "test";
+        echo "Message envoyé";
 
     }
 

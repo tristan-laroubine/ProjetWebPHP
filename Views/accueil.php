@@ -11,5 +11,5 @@
 require "../Modeles/GestionUser.php";
 
 
-RecupMdpWithEmail('tristan.LAROUBINE@etu.univ-amu.fr');
+GestionUser::RecupMdpWithEmail(17);
 
