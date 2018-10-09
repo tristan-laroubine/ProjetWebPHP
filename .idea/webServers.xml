@@ -2,7 +2,7 @@
 <project version="4">
   <component name="WebServers">
     <option name="servers">
-      <webServer id="127ea622-2cf3-4bcc-b764-005b4a9932f2" name="projetIUT" url="http://ftp-tristan-info.alwaysdata.net">
+      <webServer id="127ea622-2cf3-4bcc-b764-005b4a9932f2" name="projetIUT" url="http://tristan-info.alwaysdata.net">
         <fileTransfer host="ftp-tristan-info.alwaysdata.net" port="21">
           <advancedOptions>
             <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />

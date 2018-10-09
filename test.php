@@ -2,7 +2,7 @@
 <html>
 <head>
 
-    <link href="bootstrap-4.1.3-dist/css/bootstrap.css" rel="stylesheet">
+    <link href="bootstrap-4.1.3/css/bootstrap.css" rel="stylesheet">
 
     <!--    <link href="css/base.css" rel="stylesheet">-->
 </head>
