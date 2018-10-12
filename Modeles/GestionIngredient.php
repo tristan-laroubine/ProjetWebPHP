@@ -38,6 +38,14 @@ Class GestionIngredient
         $sql->execute();
         return $sql->fetch();
     }
+    public static function getIdByName($name)
+    {
+        $bdd = getConnextionBD();
+        $sql = $bdd -> prepare( 'SELECT id FROM INGREDIENT WHERE name= ?');
+        $sql->bindValue( 1 , $name , PDO::PARAM_STR);
+        $sql->execute();
+        return $sql->fetch()['id'];
+    }
     public static function getIngredientById($id)
     {
         $bdd = getConnextionBD();

@@ -7,23 +7,32 @@
  */
 
 require_once "../Modeles/GestionRecette.php";
-
-//addRecette('Filet mignon',10,10,5,5,'PASFINI','Fizrfzzrfzr','TEST','tozfezz');
+require_once "../Modeles/GestionIngredient.php";
+require_once "../Modeles/GestionCompose.php";
+//GestionRecette::addRecette('Grillade de poulet',10 ,10 ,10 ,5,'public','Grillade de poulet au cidre et aux épices','Grillade de poulet au cidre et aux épicesGrillade de poulet au cidre et aux épicesGrillade de poulet au cidre et aux épices',' ÉTAPE 1Avec un couteau, incisez les côtes d agneau afin de les farcir.
+//
+//    ÉTAPE 2Au mortier, écrasez 1 c. à soupe de sauge avec la gousse d ail et 1/2 c. à café de sel.
+//
+//    ÉTAPE 3A l obtention d\'une purée, ajoutez 2 c. à soupe d huile d olive, le jus d un citron, 1 c. à soupe de sauge ciselée, les 2 c. à soupe de romarin ciselé, du poivre du moulin et la pancetta finement émincée.
+//
+//    ÉTAPE 4Insérez dans les fentes des côtes d\'agneau, puius faites griller les cotes au barbecue.');
 //deleteRecetteWithId(3);
 
-$result = getRecetteByName('Filet mignon');
-if(!empty($result))
+//GestionIngredient::addIngredient('cotes d\' agneau');
+//GestionIngredient::addIngredient(' pancetta en tranches');
+//GestionIngredient::addIngredient('soupe de sauge');
+//GestionIngredient::addIngredient('gousse d\'ail');
+//GestionIngredient::addIngredient('jus d\'un citron frais');
+//GestionIngredient::addIngredient('huile d\'olive');
+//GestionIngredient::addIngredient('soupe de romarin frais');
+//GestionIngredient::addIngredient('sel');
+//GestionIngredient::addIngredient('poivre du moulin');
+//GestionCompose::addCompose(GestionRecette::getIdByName('Grillade de poulet'),GestionIngredient::getIdByName('cotes d\' agneau'),12,'unité');
+$resulte=GestionRecette::getAllIngredientsById(2);
+foreach ($resulte as $row)
 {
-    echo 'name : '.getNameByRequest($result).'<br>';
-    echo 'tmpsPremp : '.getTmpsPrepByRequest($result).'<br>';
-    echo 'tmps_cuisson : '.getTmps_CuissonByRequest($result).'<br>';
-    echo 'difficulte : '.getDifficulteByRequest($result).'<br>';
-    echo 'statut : '.getStatutByRequest($result).'<br>';
-    echo 'desCourte : '.getDesCourteByRequest($result).'<br>';
-    echo 'desLongue : '.getDesLongueByRequest($result).'<br>';
-    echo ' etapes : '.getEtapeByRequest($result).'<br>';
-}else
-{
-    echo 'rien';
+    echo $row['name'].'<br>';
 }
-
+//GestionCompose::addCompose(2,2,55,'grammes');
+//$resulte=GestionRecette::getRecetteById(8);
+//    echo 'IDR : ' . $resulte['name'] . "\t";

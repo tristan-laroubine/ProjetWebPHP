@@ -18,7 +18,7 @@ class view
         $content = $this->generateFile($this->_file,$data);
 
         // template
-        $view = $this->generateFile('Views/template.php', array('t' => $this->_t, 'content' => $content));
+        $view = $this->generateFile('Views/template.php', array('t' => $this->_t, 'content' => $content, 'isLogin' => $_SESSION['id']));
         echo $view;
 
     }

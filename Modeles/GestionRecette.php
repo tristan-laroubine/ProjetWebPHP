@@ -54,6 +54,14 @@ class GestionRecette
         $sql->execute();
         return $sql->fetch();
     }
+    public static function getIdByName($name)
+    {
+        $bdd = getConnextionBD();
+        $sql = $bdd -> prepare( 'SELECT id FROM RECETTE WHERE name= ?');
+        $sql->bindValue( 1 , $name , PDO::PARAM_STR);
+        $sql->execute();
+        return $sql->fetch()['id'];
+    }
 
     public static function addBurns($id)
     {
@@ -135,6 +143,23 @@ class GestionRecette
         $sql->bindValue( 1 , $etapes );
         $sql->bindValue( 2 , $id );
         $sql->execute();
+    }
+    public static function getAllIngredientsById($id)
+    {
+        $bdd = getConnextionBD();
+        $sql = $bdd -> prepare( 'SELECT * FROM INGREDIENT I,COMPOSE C WHERE C.id_recette= ? AND I.id=C.id_ingredient');
+        $sql->bindValue( 1 , $id , PDO::PARAM_INT);
+        $sql->execute();
+        return $sql->fetchAll();
+    }
+    public static function getAllIngredientsByName($name)
+    {
+        $bdd = getConnextionBD();
+        $id=self::getIdByName($name);
+        $sql = $bdd -> prepare( 'SELECT * FROM INGREDIENT I,COMPOSE C WHERE C.id_recette= ? AND I.id=C.id_ingredient');
+        $sql->bindValue( 1 , $id , PDO::PARAM_INT);
+        $sql->execute();
+        return $sql->fetchAll();
     }
 }
 

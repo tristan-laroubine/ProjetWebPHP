@@ -44,7 +44,7 @@ class Rooter
 			else
 			{
 				require_once('Controleurs/ControllerIndex.php');
-				$this->_ctrl = new ControllerIndex();
+                $this->_ctrl = new ControllerIndex($url);
 			}
 		}
 		//GESTION DES EXCEPTIONS
