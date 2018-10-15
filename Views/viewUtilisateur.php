@@ -42,6 +42,7 @@ $user = GestionUser::getUserById($_SESSION['id'])
                     <p class="description"> <a href="#" class="btn btn-blue">Voir mes recettes</a> </p>
                     <p class="description"> <a href="#" data-toggle="modal" data-target="#addRecette" class="btn btn-blue">Ajouter une recette</a> </p>
                 </div>
+
             </div>
             <div class="col-md-4">
                 <div class="service">
