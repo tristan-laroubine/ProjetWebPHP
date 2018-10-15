@@ -54,21 +54,69 @@ $user = GestionUser::getUserById($_SESSION['id'])
             <div class="modal-content modal-popup">
                 <a href="#" class="close-link"><i class="icon_close_alt2"></i></a>
                 <h3 class="white">Modifier mes informations</h3>
-                <a href="#" data-toggle="modal" data-target="#modal1" class="btn btn-blue">Modifier mon identifiant</a>
-                <a href="#" data-toggle="modal" data-target="#modal1" class="btn btn-blue">Modifier mon mots de passe</a>
-                <a href="#" data-toggle="modal" data-target="#modal1" class="btn btn-blue">Modifier mon adresse mail</a>
-                <a href="#" data-toggle="modal" data-target="#modal1" class="btn btn-blue">Modifier mon adresse mail de récupération</a>
+                <a href="#" data-toggle="modal" data-target="#modifName" class="btn btn-blue">Modifier mon identifiant</a>
+                <a href="#" data-toggle="modal" data-target="#modifMDP" class="btn btn-blue">Modifier mon mots de passe</a>
+                <a href="#" data-toggle="modal" data-target="#modifEmail" class="btn btn-blue">Modifier mon adresse mail</a>
+                <a href="#" data-toggle="modal" data-target="#modifRecup" class="btn btn-blue">Modifier mon adresse mail de récupération</a>
             </div>
         </div>
     </div>
     <!-- /ModifUser POP UP Form/-->
     <!-- Modifier mon identitifant -->
+    <div class="modal fade" id="modifName" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content modal-popup">
+                <a href="#" class="close-link"><i class="icon_close_alt2"></i></a>
+                <h3 class="white">Connection</h3>
+                <form action="/FormConnection" class="popup-form" method="post">
+                    <input type="text" class="form-control form-white" name="idForm" value="<?php echo $user['name'] ?>">
+                    <button type="submit" class="btn btn-submit">Modifier</button>
+                </form>
+            </div>
+        </div>
+    </div>
     <!-- /Modifier mon identifiant/ -->
     <!-- Modifier mon mots de passe -->
+    <div class="modal fade" id="modifMDP" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content modal-popup">
+                <a href="#" class="close-link"><i class="icon_close_alt2"></i></a>
+                <h3 class="white">Connection</h3>
+                <form action="/FormConnection" class="popup-form" method="post">
+                    <input type="password" class="form-control form-white" name="idForm" placeholder="***********">
+                    <button type="submit" class="btn btn-submit">Modifier</button>
+                </form>
+            </div>
+        </div>
+    </div>
     <!-- /Modifier mon mots de passe/ -->
     <!-- Modifier mon adresse mail -->
+    <div class="modal fade" id="modifEmail" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content modal-popup">
+                <a href="#" class="close-link"><i class="icon_close_alt2"></i></a>
+                <h3 class="white">Connection</h3>
+                <form action="/FormConnection" class="popup-form" method="post">
+                    <input type="text" class="form-control form-white" name="idForm" value="<?php echo $user['email'] ?>">
+                    <button type="submit" class="btn btn-submit">Modifier</button>
+                </form>
+            </div>
+        </div>
+    </div>
     <!-- /Modifier mon adresse mail / -->
     <!-- Modifier mon adresse mail de récupération -->
+    <div class="modal fade" id="modifRecup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content modal-popup">
+                <a href="#" class="close-link"><i class="icon_close_alt2"></i></a>
+                <h3 class="white">Connection</h3>
+                <form action="/FormConnection" class="popup-form" method="post">
+                    <input type="text" class="form-control form-white" name="idForm" value="<?php echo $user['recup'] ?>">
+                    <button type="submit" class="btn btn-submit">Modifier</button>
+                </form>
+            </div>
+        </div>
+    </div>
     <!-- /Modifier mon adresse mail de récupération / -->
     <div class="cut cut-bottom"></div>
 </section>
