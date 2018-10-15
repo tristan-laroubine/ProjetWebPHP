@@ -1,5 +1,6 @@
 <?php
 require_once('Views/View.php');
+require_once ('Modeles/GestionUser.php');
 class ControllerFormConnection
 {
     private $_recetteModel;
@@ -20,31 +21,22 @@ class ControllerFormConnection
     private function connection()
     {
 
-        if (isset($_POST['idForm']))
-        {
-            $idForm = protect_input(filter_input(INPUT_POST,'idForm'));
+        if (isset($_POST['idForm'])) {
+            $idForm = htmlspecialchars(filter_input(INPUT_POST, 'idForm'));
         }
 
-        if (isset($_POST['mdpForm']) and is_string($_POST['mdpForm']))
-        {
-            $mdpForm = protect_input(filter_input(INPUT_POST,'mdpForm'));
-        }
-        function protect_input($value)
-        {
-
-            $value = htmlspecialchars($value);
-
-            return $value;
+        if (isset($_POST['mdpForm']) and is_string($_POST['mdpForm'])) {
+            $mdpForm = htmlspecialchars(filter_input(INPUT_POST, 'mdpForm'));
         }
 
 
-//      if ( ! session_id() ) @ session_start();
-        session_start();
-        $_SESSION['id']=5;
-
-
-
-        $this->_view = new View('Index');
-        $this->_view->generate(array('recette' => 'coucou'));
+        if (GestionUser::isRightIdAndMdp($idForm,$mdpForm)) {
+            $user = GestionUser::getUserByNameAndPassword($idForm, $mdpForm);
+            session_start();
+            $_SESSION['id'] = $user['id'];
+            $_SESSION['grade'] = 999;
+        }
+        header('Location: http://tristan-info.alwaysdata.net');
+        exit();
     }
 }

@@ -1,5 +1,8 @@
+<?php
+    session_start();
+?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 
 <head>
     <meta charset="UTF-8">
@@ -54,32 +57,28 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right main-nav">
-                <li><a href="#intro">Intro</a></li>
+                <li><a href="/Recette">Recette</a></li>
                 <li><a href="#services">Services</a></li>
                 <li><a href="#team">Team</a></li>
                 <li><a href="#pricing">Pricing</a></li>
-                <li><a href="#" data-toggle="modal" data-target="#modal1" class="btn btn-blue">Sign Up</a></li>
+                <?php
+                if (isset($_SESSION['grade']))
+                {
+                    echo '<li><a href="/Utilisateur">Utilisateur</a></li>';
+                    echo '<li><a href="/Deconnection"  class="btn btn-blue">Déconnection</a></li>';
+                }
+                else {
+                    echo '<li><a href="#" data-toggle="modal" data-target="#modal1" class="btn btn-blue">Connection</a></li>';
+                }
+
+                ?>
             </ul>
         </div>
         <!-- /.navbar-collapse -->
     </div>
     <!-- /.container-fluid -->
 </nav>
-<header id="intro">
-    <div class="container">
-        <div class="table">
-            <div class="header-text">
-                <div class="row">
-                    <div class="col-md-12 text-center">
-                        <h3 class="light white">COOK & BURN !</h3>
-                        <h1 class="white typed">COOK & BURN, site de partage de recette</h1>
-                        <span class="typed-cursor">|</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</header>
+
 
 <!-- special -->
 
@@ -91,28 +90,17 @@ echo $content;
     <div class="modal-dialog">
         <div class="modal-content modal-popup">
             <a href="#" class="close-link"><i class="icon_close_alt2"></i></a>
-            <h3 class="white">Sign Up</h3>
-            <form action="/FormConnection" class="popup-form">
-                <input type="text" class="form-control form-white" placeholder="Full Name">
-                <input type="text" class="form-control form-white" placeholder="Email Address">
-                <div class="dropdown">
-                    <button id="dLabel" class="form-control form-white dropdown" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Pricing Plan
-                    </button>
-                    <ul class="dropdown-menu animated fadeIn" role="menu" aria-labelledby="dLabel">
-                        <li class="animated lightSpeedIn"><a href="#">1 month membership ($150)</a></li>
-                        <li class="animated lightSpeedIn"><a href="#">3 month membership ($350)</a></li>
-                        <li class="animated lightSpeedIn"><a href="#">1 year membership ($1000)</a></li>
-                        <li class="animated lightSpeedIn"><a href="#">Free trial class</a></li>
-                    </ul>
-                </div>
+            <h3 class="white">Connection</h3>
+            <form action="/FormConnection" class="popup-form" method="post">
+                <input type="text" class="form-control form-white" name="idForm" placeholder="Identifiant">
+                <input type="password" class="form-control form-white" name="mdpForm" placeholder="Mots de Passe">
                 <div class="checkbox-holder text-left">
                     <div class="checkbox">
-                        <input type="checkbox" value="None" id="squaredOne" name="check" />
+                        <input type="checkbox" value="None" id="squaredOne" name="" />
                         <label for="squaredOne"><span>I Agree to the <strong>Terms &amp; Conditions</strong></span></label>
                     </div>
                 </div>
-                <button type="submit" class="btn btn-submit">Submit</button>
+                <button type="submit" class="btn btn-submit">Connection</button>
             </form>
         </div>
     </div>
@@ -141,7 +129,7 @@ echo $content;
         </div>
         <div class="row bottom-footer text-center-mobile">
             <div class="col-sm-8">
-                <p>&copy; 2015 All Rights Reserved. Powered by <a href="http://www.phir.co/">PHIr</a> exclusively for <a href="http://tympanus.net/codrops/">Codrops</a></p>
+                <p>&copy; 2018 TOUS DROITS RÉSERVÉS. Powered by <a href="http://www.phir.co/">PHIr</a> exclusively for <a href="http://tympanus.net/codrops/">Codrops</a></p>
             </div>
             <div class="col-sm-4 text-right text-center-mobile">
                 <ul class="social-footer">

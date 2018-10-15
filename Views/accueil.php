@@ -11,5 +11,8 @@
 require "../Modeles/GestionUser.php";
 
 
-GestionUser::RecupMdpWithEmail(17);
+//$user = GestionUser::getUserByNameAndPassword('ok','test12');
 
+//GestionUser::setMdpById(1,'root');
+
+GestionUser::setMdpById(2,'test');

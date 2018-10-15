@@ -29,13 +29,19 @@ class GestionUser
     public static function getUserByNameAndPassword($name, $mdp)
     {
         $bdd = getConnextionBD();
+        $mdp = sha1($mdp);
         $sql = $bdd -> prepare( 'SELECT * FROM USER WHERE name= ? AND mdp = ?');
         $sql->bindValue( 1 , $name , PDO::PARAM_STR);
         $sql->bindValue( 2 , $mdp , PDO::PARAM_STR);
         $sql->execute();
-        return $sql->fetchAll();
+        return $sql->fetch();
     }
-
+    public static function isRightIdAndMdp($name, $mdp)
+    {
+        $user = self::getUserByNameAndPassword($name,$mdp);
+        if ($user['id'] != null )return true;
+        else return false;
+    }
     /** Renvois le grade si l'utilisateur est bien connecter
      * @param $name
      * @param $password
@@ -47,6 +53,7 @@ class GestionUser
         {
             return $row['grade'];
         }
+        return null;
     }
 
     /** addUser ajoute un user dans la base de donnée, dans la table USER
@@ -58,6 +65,7 @@ class GestionUser
      */
     public static function addUser($name, $mdp, $grade, $email, $recup)
     {
+        $mdp = sha1($mdp);
         $bdd = getConnextionBD();
         $sql =  $bdd -> prepare('INSERT INTO USER ( name, mdp, grade, email, recup ) VALUES (?,?,?,?,?) ');
         $sql->bindValue(1, $name , PDO::PARAM_STR);
@@ -102,7 +110,10 @@ class GestionUser
      */
     public static function setMdpById($id ,$mdp)
     {
+
         $bdd = getConnextionBD();
+        $mdp = sha1($mdp);
+
         $sql =  $bdd -> prepare ('UPDATE USER SET mdp=? WHERE id=?');
         $sql->bindValue( 1 , $mdp );
         $sql->bindValue( 2 , $id );
@@ -196,6 +207,8 @@ class GestionUser
 
     }
 
-
+    public function AfficheInformationPersonelle($id)
+    {
+        echo 'coucou';
+    }
 }
-
