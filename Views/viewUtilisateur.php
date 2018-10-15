@@ -1,10 +1,9 @@
 <?php
-$this->_t = 'Cook And Burn';
-$id=17;
-$name='Tristan LAROUBINE';
-$grade=999;
-$email='tristan.LAROUBINE@etu.univ-amu.fr';
+
 require_once 'Modeles/GestionUser.php';
+session_start();
+$this->_t = 'Cook And Burn';
+$user = GestionUser::getUserById($_SESSION['id'])
 ?>
 <section id="services" class="section section-padded">
     <div class="container">
@@ -19,7 +18,12 @@ require_once 'Modeles/GestionUser.php';
                         <img src="img/icons/heart-blue.png" alt="" class="icon">
                     </div>
                     <h4 class="heading">Mes informations personnel</h4>
-                    <p class="description"><?php echo 'coucou' ?></p>
+                    <p class="description">
+                        Identifiant : <span style="font-weight: bold"><?php echo $user['name'] ?></span><br/>
+                        Mots de passe : ***************<br/>
+                        Email : <?php echo $user['email'] ?><br/>
+                        Adresse mail de récupération : <?php echo $user['recup'] ?>
+                    </p>
                 </div>
             </div>
             <div class="col-md-4">

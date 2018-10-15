@@ -206,9 +206,4 @@ class GestionUser
         echo "Message envoyé";
 
     }
-
-    public function AfficheInformationPersonelle($id)
-    {
-        echo 'coucou';
-    }
 }

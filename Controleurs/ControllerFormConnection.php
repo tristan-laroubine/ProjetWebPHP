@@ -34,7 +34,7 @@ class ControllerFormConnection
             $user = GestionUser::getUserByNameAndPassword($idForm, $mdpForm);
             session_start();
             $_SESSION['id'] = $user['id'];
-            $_SESSION['grade'] = 999;
+            $_SESSION['grade'] = $user['grade'];
         }
         header('Location: http://tristan-info.alwaysdata.net');
         exit();
