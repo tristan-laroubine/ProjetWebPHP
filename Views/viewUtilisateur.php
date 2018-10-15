@@ -69,8 +69,15 @@ $user = GestionUser::getUserById($_SESSION['id'])
                 <a href="#" class="close-link"><i class="icon_close_alt2"></i></a>
                 <h3 class="white">Connection</h3>
                 <form action="/FormConnection" class="popup-form" method="post">
-                    <input type="text" class="form-control form-white" name="idForm" value="<?php echo $user['name'] ?>">
-                    <button type="submit" class="btn btn-submit">Modifier</button>
+                    <input type="text" class="form-control form-white" name="idForm" placeholder="Identifiant">
+                    <input type="password" class="form-control form-white" name="mdpForm" placeholder="Mots de Passe">
+                    <div class="checkbox-holder text-left">
+                        <div class="checkbox">
+                            <input type="checkbox" value="None" id="squaredOne" name="" />
+                            <label for="squaredOne"><span>I Agree to the <strong>Terms &amp; Conditions</strong></span></label>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-submit">Connection</button>
                 </form>
             </div>
         </div>
@@ -82,9 +89,9 @@ $user = GestionUser::getUserById($_SESSION['id'])
             <div class="modal-content modal-popup">
                 <a href="#" class="close-link"><i class="icon_close_alt2"></i></a>
                 <h3 class="white">Connection</h3>
-                <form action="/FormConnection" class="popup-form" method="post">
+                <form action="/FormUtilisateur" class="popup-form" method="post">
                     <input type="password" class="form-control form-white" name="idForm" placeholder="***********">
-                    <button type="submit" class="btn btn-submit">Modifier</button>
+                    <button type="submit" name="modifMDP" value="yes" class="btn btn-submit">Modifier</button>
                 </form>
             </div>
         </div>
