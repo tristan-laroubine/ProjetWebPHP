@@ -36,6 +36,8 @@
     <link rel="stylesheet" type="text/css" href="fonts/eleganticons/et-icons.css">
     <!-- Main style -->
     <link rel="stylesheet" type="text/css" href="css/cardio.css">
+    <!-- ADD style -->
+    <link rel="stylesheet" type="text/css" href="css/more.css">
 </head>
 
 <body>
@@ -155,6 +157,8 @@ echo $content;
 <script src="js/typewriter.js"></script>
 <script src="js/jquery.onepagenav.js"></script>
 <script src="js/main.js"></script>
+<script src="js/modif.js"></script>
+
 </body>
 
 </html>

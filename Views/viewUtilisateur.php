@@ -5,6 +5,11 @@ session_start();
 $this->_t = 'Cook And Burn';
 $user = GestionUser::getUserById($_SESSION['id'])
 ?>
+
+<div class="likeFooter">
+    <br/>
+</div>
+
 <section id="services" class="section section-padded">
     <div class="container">
         <div class="row text-center title">
@@ -32,9 +37,9 @@ $user = GestionUser::getUserById($_SESSION['id'])
                 <div class="service">
                     <div class="icon-holder">
                         <img src="img/icons/heart-blue.png" alt="" class="icon">
-                    </div>
+                </div>
                     <h4 class="heading">Mes recettes</h4>
-                    <p class="description">A elementum ligula lacus ac quam ultrices a scelerisque praesent vel suspendisse scelerisque a aenean hac montes.</p>
+                    <p class="description"> <a href="#" class="btn btn-blue">Voir mes recettes</a> </p>
                 </div>
             </div>
             <div class="col-md-4">
@@ -43,7 +48,7 @@ $user = GestionUser::getUserById($_SESSION['id'])
                         <img src="img/icons/heart-blue.png" alt="" class="icon">
                     </div>
                     <h4 class="heading">Mes favoris</h4>
-                    <p class="description">A elementum ligula lacus ac quam ultrices a scelerisque praesent vel suspendisse scelerisque a aenean hac montes.</p>
+                    <p class="description"> <a href="#" class="btn btn-blue">Voir mes favoris</a> </p>
                 </div>
             </div>
         </div>
@@ -52,7 +57,6 @@ $user = GestionUser::getUserById($_SESSION['id'])
     <div class="modal fade" id="modifUser" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content modal-popup">
-                <a href="#" class="close-link"><i class="icon_close_alt2"></i></a>
                 <h3 class="white">Modifier mes informations</h3>
                 <a href="#" data-toggle="modal" data-target="#modifName" class="btn btn-blue">Modifier mon identifiant</a>
                 <a href="#" data-toggle="modal" data-target="#modifMDP" class="btn btn-blue">Modifier mon mots de passe</a>
@@ -66,18 +70,10 @@ $user = GestionUser::getUserById($_SESSION['id'])
     <div class="modal fade" id="modifName" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content modal-popup">
-                <a href="#" class="close-link"><i class="icon_close_alt2"></i></a>
                 <h3 class="white">Connection</h3>
-                <form action="/FormConnection" class="popup-form" method="post">
-                    <input type="text" class="form-control form-white" name="idForm" placeholder="Identifiant">
-                    <input type="password" class="form-control form-white" name="mdpForm" placeholder="Mots de Passe">
-                    <div class="checkbox-holder text-left">
-                        <div class="checkbox">
-                            <input type="checkbox" value="None" id="squaredOne" name="" />
-                            <label for="squaredOne"><span>I Agree to the <strong>Terms &amp; Conditions</strong></span></label>
-                        </div>
-                    </div>
-                    <button type="submit" class="btn btn-submit">Connection</button>
+                <form action="/FormUtilisateur" class="popup-form" method="post">
+                    <input type="text" class="form-control form-white" name="nameForm" value="<?php echo $user['name'] ?>">
+                    <button type="submit" name="modifName" value="yes" class="btn btn-submit">Modifier</button>
                 </form>
             </div>
         </div>
@@ -87,10 +83,10 @@ $user = GestionUser::getUserById($_SESSION['id'])
     <div class="modal fade" id="modifMDP" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content modal-popup">
-                <a href="#" class="close-link"><i class="icon_close_alt2"></i></a>
+
                 <h3 class="white">Connection</h3>
                 <form action="/FormUtilisateur" class="popup-form" method="post">
-                    <input type="password" class="form-control form-white" name="idForm" placeholder="***********">
+                    <input type="password" class="form-control form-white" name="mdpForm" placeholder="***********">
                     <button type="submit" name="modifMDP" value="yes" class="btn btn-submit">Modifier</button>
                 </form>
             </div>
@@ -101,11 +97,11 @@ $user = GestionUser::getUserById($_SESSION['id'])
     <div class="modal fade" id="modifEmail" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content modal-popup">
-                <a href="#" class="close-link"><i class="icon_close_alt2"></i></a>
+
                 <h3 class="white">Connection</h3>
-                <form action="/FormConnection" class="popup-form" method="post">
-                    <input type="text" class="form-control form-white" name="idForm" value="<?php echo $user['email'] ?>">
-                    <button type="submit" class="btn btn-submit">Modifier</button>
+                <form action="/FormUtilisateur" class="popup-form" method="post">
+                    <input type="text" class="form-control form-white" name="emailForm" value="<?php echo $user['email'] ?>">
+                    <button type="submit"  name="modifEmail" value="yes" class="btn btn-submit">Modifier</button>
                 </form>
             </div>
         </div>
@@ -115,11 +111,11 @@ $user = GestionUser::getUserById($_SESSION['id'])
     <div class="modal fade" id="modifRecup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content modal-popup">
-                <a href="#" class="close-link"><i class="icon_close_alt2"></i></a>
+
                 <h3 class="white">Connection</h3>
-                <form action="/FormConnection" class="popup-form" method="post">
-                    <input type="text" class="form-control form-white" name="idForm" value="<?php echo $user['recup'] ?>">
-                    <button type="submit" class="btn btn-submit">Modifier</button>
+                <form action="/FormUtilisateur" class="popup-form" method="post">
+                    <input type="text" class="form-control form-white" name="recupForm" value="<?php echo $user['recup'] ?>">
+                    <button type="submit"  name="modifRecup" value="yes" class="btn btn-submit">Modifier</button>
                 </form>
             </div>
         </div>

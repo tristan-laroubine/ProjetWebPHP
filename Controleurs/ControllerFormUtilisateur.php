@@ -20,32 +20,44 @@ class ControllerFormUtilisateur
 
     private function modification()
     {
+        session_start();
         if ($_POST['modifName']=='yes'){
-            echo 'Modif Name';
+            if (isset($_POST['nameForm'])) {
+                $nameForm = htmlspecialchars(filter_input(INPUT_POST, 'nameForm'));
+                GestionUser::setNameById($_SESSION['id'],$nameForm);
+                header('Location: http://tristan-info.alwaysdata.net/Utilisateur');
+                exit();
+            }
         }
         elseif ($_POST['modifMDP']=='yes')
         {
-            echo 'modifMDP';
+            if (isset($_POST['mdpForm'])) {
+                $mdpForm = htmlspecialchars(filter_input(INPUT_POST, 'mdpForm'));
+                GestionUser::setMdpById($_SESSION['id'],$mdpForm);
+                header('Location: http://tristan-info.alwaysdata.net/Utilisateur');
+                exit();
+            }
+        }
+        elseif ($_POST['modifEmail']=='yes')
+        {
+            if (isset($_POST['emailForm'])) {
+                $emailForm = htmlspecialchars(filter_input(INPUT_POST, 'emailForm'));
+                GestionUser::setEmailById($_SESSION['id'],$emailForm);
+                header('Location: http://tristan-info.alwaysdata.net/Utilisateur');
+                exit();
+            }
+        }
+        elseif ($_POST['modifRecup']=='yes')
+        {
+            if (isset($_POST['recupForm'])) {
+                $recupForm = htmlspecialchars(filter_input(INPUT_POST, 'recupForm'));
+                GestionUser::setRecupById($_SESSION['id'],$recupForm);
+                header('Location: http://tristan-info.alwaysdata.net/Utilisateur');
+                exit();
+            }
         }
         else {
-            echo 'jsépas';
+            require_once('Views/viewError.php');
         }
-//        if (isset($_POST['idForm'])) {
-//            $idForm = htmlspecialchars(filter_input(INPUT_POST, 'idForm'));
-//        }
-//
-//        if (isset($_POST['mdpForm']) and is_string($_POST['mdpForm'])) {
-//            $mdpForm = htmlspecialchars(filter_input(INPUT_POST, 'mdpForm'));
-//        }
-//
-//
-//        if (GestionUser::isRightIdAndMdp($idForm,$mdpForm)) {
-//            $user = GestionUser::getUserByNameAndPassword($idForm, $mdpForm);
-//            session_start();
-//            $_SESSION['id'] = $user['id'];
-//            $_SESSION['grade'] = $user['grade'];
-//        }
-//        header('Location: http://tristan-info.alwaysdata.net');
-//        exit();
     }
 }
