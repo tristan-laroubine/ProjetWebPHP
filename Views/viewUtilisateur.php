@@ -40,6 +40,7 @@ $user = GestionUser::getUserById($_SESSION['id'])
                 </div>
                     <h4 class="heading">Mes recettes</h4>
                     <p class="description"> <a href="#" class="btn btn-blue">Voir mes recettes</a> </p>
+                    <p class="description"> <a href="#" data-toggle="modal" data-target="#addRecette" class="btn btn-blue">Ajouter une recette</a> </p>
                 </div>
             </div>
             <div class="col-md-4">
@@ -108,13 +109,13 @@ $user = GestionUser::getUserById($_SESSION['id'])
     </div>
     <!-- /Modifier mon adresse mail / -->
     <!-- Modifier mon adresse mail de récupération -->
-    <div class="modal fade" id="modifRecup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal fade" id="addRecette" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content modal-popup">
 
                 <h3 class="white">Connection</h3>
-                <form action="/FormUtilisateur" class="popup-form" method="post">
-                    <input type="text" class="form-control form-white" name="recupForm" value="<?php echo $user['recup'] ?>">
+                <form action="../test.php" class="popup-form" method="post">
+                    <input type="text" class="form-control form-white" name="mdp" value="test">
                     <button type="submit"  name="modifRecup" value="yes" class="btn btn-submit">Modifier</button>
                 </form>
             </div>
