@@ -20,9 +20,11 @@ $user = GestionUser::getUserById($_SESSION['id'])
                     <h4 class="heading">Mes informations personnel</h4>
                     <p class="description">
                         Identifiant : <span style="font-weight: bold"><?php echo $user['name'] ?></span><br/>
-                        Mots de passe : ***************<br/>
-                        Email : <?php echo $user['email'] ?><br/>
-                        Adresse mail de récupération : <?php echo $user['recup'] ?>
+                        Mots de passe : <span style="font-weight: bold">***************<br/></span>
+                        Email : <span style="font-weight: bold"><?php echo $user['email'] ?><br/></span>
+                        Adresse mail de récupération : <span style="font-weight: bold"> <?php echo $user['recup'] ?></span><br/>
+
+                        <a href="#" data-toggle="modal" data-target="#modifUser" class="btn btn-blue">Modifier</a>
                     </p>
                 </div>
             </div>
@@ -46,5 +48,27 @@ $user = GestionUser::getUserById($_SESSION['id'])
             </div>
         </div>
     </div>
+    <!-- ModifUser POP UP Form -->
+    <div class="modal fade" id="modifUser" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content modal-popup">
+                <a href="#" class="close-link"><i class="icon_close_alt2"></i></a>
+                <h3 class="white">Modifier mes informations</h3>
+                <a href="#" data-toggle="modal" data-target="#modal1" class="btn btn-blue">Modifier mon identifiant</a>
+                <a href="#" data-toggle="modal" data-target="#modal1" class="btn btn-blue">Modifier mon mots de passe</a>
+                <a href="#" data-toggle="modal" data-target="#modal1" class="btn btn-blue">Modifier mon adresse mail</a>
+                <a href="#" data-toggle="modal" data-target="#modal1" class="btn btn-blue">Modifier mon adresse mail de récupération</a>
+            </div>
+        </div>
+    </div>
+    <!-- /ModifUser POP UP Form/-->
+    <!-- Modifier mon identitifant -->
+    <!-- /Modifier mon identifiant/ -->
+    <!-- Modifier mon mots de passe -->
+    <!-- /Modifier mon mots de passe/ -->
+    <!-- Modifier mon adresse mail -->
+    <!-- /Modifier mon adresse mail / -->
+    <!-- Modifier mon adresse mail de récupération -->
+    <!-- /Modifier mon adresse mail de récupération / -->
     <div class="cut cut-bottom"></div>
 </section>
