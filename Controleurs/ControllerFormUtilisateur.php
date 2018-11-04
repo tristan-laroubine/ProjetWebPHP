@@ -13,6 +13,7 @@ class ControllerFormUtilisateur
         if(isset($url) && count($url) > 1) {
 
             throw new Exception('Page introuvable');
+
         }
         else
             $this->modification();
@@ -20,7 +21,12 @@ class ControllerFormUtilisateur
 
     private function modification()
     {
-        session_start();
+        if (!isset($_SESSION['id']))
+        {
+            header('Location: /viewError/erreur/1');
+            exit();
+        }
+
         if ($_POST['modifName']=='yes'){
             if (isset($_POST['nameForm'])) {
                 $nameForm = htmlspecialchars(filter_input(INPUT_POST, 'nameForm'));
@@ -57,7 +63,9 @@ class ControllerFormUtilisateur
             }
         }
         else {
+
             require_once('Views/viewError.php');
+            exit();
         }
     }
 }

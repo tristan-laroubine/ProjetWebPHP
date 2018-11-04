@@ -11,3 +11,7 @@ tristan-info_pierre
 
 
 
+BD : id : 167519 Link : https://phpmyadmin.alwaysdata.com/
+
+Info :
+Compte Admin mdp JeSuisUnAdmin
