@@ -17,15 +17,7 @@ class GestionUser
         $bdd = getConnextionBD();
         $sql =  $bdd -> prepare ('SELECT * FROM USER WHERE id = ?;');
         $sql->bindValue( 1 , $id , PDO::PARAM_INT);
-        try{
-            $sql->execute();
-            $sql->rowCount() or die('Pas de résultat -getUserById'.PHP_EOL);
-        }
-        catch (PDOException $e)
-        {
-            exit();
-        }
-
+        $sql->execute();
         return $sql->fetch();
     }
 
@@ -41,24 +33,14 @@ class GestionUser
         $sql = $bdd -> prepare( 'SELECT * FROM USER WHERE name= ? AND mdp = ?');
         $sql->bindValue( 1 , $name , PDO::PARAM_STR);
         $sql->bindValue( 2 , $mdp , PDO::PARAM_STR);
-        try{
-            $sql->execute();
-        }
-        catch (PDOException $e)
-        {
-            exit();
-        }
-
+        $sql->execute();
         return $sql->fetch();
     }
     public static function isRightIdAndMdp($name, $mdp)
     {
         $user = self::getUserByNameAndPassword($name,$mdp);
         if ($user['id'] != null )return true;
-        else{
-            echo '<script language="JavaScript">alert("Mauvais mot de passe")</script>';
-            return false;
-        }
+        else return false;
     }
     /** Renvois le grade si l'utilisateur est bien connecter
      * @param $name
@@ -92,14 +74,7 @@ class GestionUser
         $sql->bindValue(4, $email , PDO::PARAM_STR);
         $sql->bindValue(5, $recup , PDO::PARAM_STR);
 
-        try{
-            $sql->execute();
-        }
-        catch (PDOException $e)
-        {
-            exit();
-        }
-
+        $sql->execute();
 
     }
 
@@ -113,14 +88,7 @@ class GestionUser
         $sql =  $bdd -> prepare ('UPDATE USER SET id=? WHERE id=?');
         $sql->bindValue( 2 , $idOld );
         $sql->bindValue( 1 , $idNew);
-        try{
-            $sql->execute();
-        }
-        catch (PDOException $e)
-        {
-            exit();
-        }
-
+        $sql->execute();
     }
 
     /**Change le name de l'utilisateur en fonction de son id
@@ -131,16 +99,9 @@ class GestionUser
     {
         $bdd = getConnextionBD();
         $sql =  $bdd -> prepare ('UPDATE USER SET name=? WHERE id=?');
-        $sql->bindValue( 1 , $name, PDO::PARAM_STR);
-        $sql->bindValue( 2 , $id , PDO::PARAM_INT);
-        try{
-            $sql->execute();
-        }
-        catch (PDOException $e)
-        {
-            exit();
-        }
-
+        $sql->bindValue( 1 , $name );
+        $sql->bindValue( 2 , $id );
+        $sql->execute();
     }
 
     /**Change le MDP de l'utilisateur en fonction de son id
@@ -154,16 +115,9 @@ class GestionUser
         $mdp = sha1($mdp);
 
         $sql =  $bdd -> prepare ('UPDATE USER SET mdp=? WHERE id=?');
-        $sql->bindValue( 1 , $mdp, PDO::PARAM_STR );
-        $sql->bindValue( 2 , $id, PDO::PARAM_INT);
-        try{
-            $sql->execute();
-        }
-        catch (PDOException $e)
-        {
-            exit();
-        }
-
+        $sql->bindValue( 1 , $mdp );
+        $sql->bindValue( 2 , $id );
+        $sql->execute();
     }
 
     /**Change le Grade de l'utilisateur en fonction de son id
@@ -174,16 +128,9 @@ class GestionUser
     {
         $bdd = getConnextionBD();
         $sql =  $bdd -> prepare ('UPDATE USER SET grade=? WHERE id=?');
-        $sql->bindValue( 1 , $grade,PDO::PARAM_INT);
-        $sql->bindValue( 2 , $id, PDO::PARAM_INT);
-        try{
-            $sql->execute();
-        }
-        catch (PDOException $e)
-        {
-            exit();
-        }
-
+        $sql->bindValue( 1 , $grade );
+        $sql->bindValue( 2 , $id );
+        $sql->execute();
     }
 
     /**Change le email de l'utilisateur en fonction de son id
@@ -194,16 +141,9 @@ class GestionUser
     {
         $bdd = getConnextionBD();
         $sql =  $bdd -> prepare ('UPDATE USER SET email=? WHERE id=?');
-        $sql->bindValue( 1 , $email, PDO::PARAM_STR );
-        $sql->bindValue( 2 , $id, PDO::PARAM_INT);
-        try{
-            $sql->execute();
-        }
-        catch (PDOException $e)
-        {
-            exit();
-        }
-
+        $sql->bindValue( 1 , $email );
+        $sql->bindValue( 2 , $id );
+        $sql->execute();
     }
 
     /**Change le recup de l'utilisateur en fonction de son id
@@ -214,16 +154,9 @@ class GestionUser
     {
         $bdd = getConnextionBD();
         $sql =  $bdd -> prepare ('UPDATE USER SET recup=? WHERE id=?');
-        $sql->bindValue( 1 , $recup, PDO::PARAM_STR );
-        $sql->bindValue( 2 , $id, PDO::PARAM_INT);
-        try{
-            $sql->execute();
-        }
-        catch (PDOException $e)
-        {
-            exit();
-        }
-
+        $sql->bindValue( 1 , $recup );
+        $sql->bindValue( 2 , $id );
+        $sql->execute();
     }
 
 
@@ -271,69 +204,6 @@ class GestionUser
 // Envoi
         mail($to, $subject, $message, implode("\r\n", $headers));
         echo "Message envoyé";
-
-    }
-    public static function isUserCreateThisRecette($idUser, $idRecette)
-    {
-        $bdd = getConnextionBD();
-        $sql =  $bdd -> prepare ('SELECT * FROM CREE WHERE idUser = ? AND idRecette = ?');
-        $sql->bindValue( 1 , $idUser, PDO::PARAM_INT );
-        $sql->bindValue( 2 , $idRecette, PDO::PARAM_INT );
-        try{
-            $sql->execute();
-        }
-        catch (PDOException $e)
-        {
-            exit();
-        }
-
-        $result = $sql->fetch();
-        if ($result != false)
-        {
-            return true;
-        }
-        else return false;
-    }
-    public static function deleteUserWithId($id)
-    {
-        $bdd = getConnextionBD();
-        $sql = $bdd -> prepare( 'DELETE FROM FAVORIS WHERE id_user = ?');
-        $sql->bindValue( 1 , $id , PDO::PARAM_INT);
-        try{
-            $sql->execute();
-        }
-        catch (PDOException $e)
-        {
-            exit();
-        }
-        $sql1 = $bdd -> prepare( 'DELETE FROM BURNS WHERE id_user = ?');
-        $sql1->bindValue( 1 , $id , PDO::PARAM_INT);
-        try{
-            $sql1->execute();
-        }
-        catch (PDOException $e)
-        {
-            exit();
-        }
-        $sql2 = $bdd -> prepare( 'DELETE FROM CREE WHERE idUser = ?');
-        $sql2->bindValue( 1 , $id , PDO::PARAM_INT);
-        try{
-            $sql2->execute();
-        }
-        catch (PDOException $e)
-        {
-            exit();
-        }
-        $sql3 = $bdd -> prepare( 'DELETE FROM USER WHERE id = ?');
-        $sql3->bindValue( 1 , $id , PDO::PARAM_INT);
-        try{
-            $sql3->execute();
-        }
-        catch (PDOException $e)
-        {
-            exit();
-        }
-
 
     }
 }

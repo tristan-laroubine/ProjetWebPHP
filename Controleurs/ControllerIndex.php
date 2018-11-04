@@ -11,17 +11,12 @@ class ControllerIndex
 		if(isset($url) && count($url) > 1)
 			throw new Exception('Page introuvable');
 		else
-            $arrayDate=GestionRecette::getRecetteByOrderDate();
-        $p=0;
-        foreach ($arrayDate as $row)
-        {
-            $arrayRecette[]=GestionRecette::getRecetteById($row['id']);
-            ++$p;
-            if($p==10)  { break;}
-        }
-        $resultFirst=GestionRecette::getRecetteById($arrayDate[0]['id']);
-        $arrRelou=[$arrayDate,$arrayRecette,$resultFirst];
+			$this->recette();
+	}
+
+	private function recette()
+	{
 		$this->_view = new View('Index');
-        $this->_view->generate($arrRelou);
+        $this->_view->generate(array('recette' => 'coucou'));
 	}
 }

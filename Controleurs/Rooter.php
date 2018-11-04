@@ -30,22 +30,11 @@ class Rooter
 				$controlerClass = "Controller".$controller;
 				$controllerFile = 	"Controleurs/".$controlerClass.".php";
 
+
 				if(file_exists($controllerFile))
 				{
 					require_once($controllerFile);
-//                    var_dump($url);die;
-                    $this->_ctrl = new $controlerClass();
-
-					$action = 'index';
-
-					if (isset($url[1])) {
-                        $action = $url[1];
-                    }
-
-
-                    if (method_exists($this->_ctrl, $action)) {
-                        $this->_ctrl->$action(array_slice($url, 2));
-                    }
+					$this->_ctrl = new $controlerClass($url);
 				}
 				else
                 {
@@ -63,7 +52,6 @@ class Rooter
 		{
 			$errorMsg = $e->getMessage();
 			require_once('Views/viewError.php');
-			exit();
 		}
 	}
 }

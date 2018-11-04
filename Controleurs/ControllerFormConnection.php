@@ -35,8 +35,6 @@ class ControllerFormConnection
             session_start();
             $_SESSION['id'] = $user['id'];
             $_SESSION['grade'] = $user['grade'];
-        }else{
-            echo 'NOPE';
         }
         header('Location: http://tristan-info.alwaysdata.net');
         exit();
