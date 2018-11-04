@@ -82,10 +82,10 @@
                                     '<td>'.$row['tmpsPrep'].'</td>'.
                                     '<td>'.$row['tmps_cuisson'].'</td>'.
                                     '<td>'.$row['difficulte'].'</td>'.
-                                    '<td>'.$row['bruns'].'</td>'.
-                                    '<td>'.$row['statu'].'</td>'.
-                                    '<td>'.$row['DesCourte'].'</td>'.
-                                    '<td>'.$row['DesLongues'].'</td>'.
+                                    '<td>'.$row['burns'].'</td>'.
+                                    '<td>'.$row['statut'].'</td>'.
+                                    '<td>'.$row['desCourte'].'</td>'.
+                                    '<td>'.$row['desLongue'].'</td>'.
                                     '<td>'.$row['etapes'].'</td>'.
                                     '<td>'.$row['date15Burns'].'</td>'.
                                     '<td><p data-placement="top" data-toggle="tooltip" title="Edit"><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></span></button></p></td>

@@ -20,7 +20,7 @@
 
         <div class="col-md-4">
             <div class="team text-center">
-                <div class="cover" style="background:url('/src/img/recette(1).jpg'); background-size:cover;">
+                <div class="cover" style="background:url('/img/recette.png'); background-size:cover;">
                     <div class="overlay text-center">
                         <h3 class="white"> <?php echo $row['burns'];?> Burns</h3>
                         <h5 class="white">Difficulté : <?php echo $row['difficulte'];?> / 10</h5>

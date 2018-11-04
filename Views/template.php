@@ -67,6 +67,14 @@
          .search-container button:hover {
             background: #ccc;
         }
+
+         .page {
+             display: none;
+         }
+         .page-active {
+             display: block;
+         }
+
     </style>
 </head>
 
@@ -90,8 +98,8 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right main-nav">
                 <li class="search-container">
-                    <form action="/action_page.php">
-                        <input type="text" placeholder="Search.." name="search">
+                    <form action="/Recherche/recherche" method="post">
+                        <input type="text" placeholder="Recherche.." name="search">
                         <button type="submit"><i class="fa fa-search"></i></button>
                     </form>
                 </li>

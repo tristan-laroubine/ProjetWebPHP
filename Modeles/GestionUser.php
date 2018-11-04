@@ -205,7 +205,19 @@ class GestionUser
         }
 
     }
-
+    public static function getAllUsers()
+    {
+        $bdd = getConnextionBD();
+        $sql =  $bdd -> prepare ('SELECT * FROM USER');
+        try{
+            $sql->execute();
+        }
+        catch (PDOException $e)
+        {
+            exit();
+        }
+        return $sql->fetchAll();
+    }
     /**Change le recup de l'utilisateur en fonction de son id
      * @param $id id de l'utilisateur concerner
      * @param $grade le nouveaux recup

@@ -20,7 +20,14 @@ class ControllerIndex
             if($p==10)  { break;}
         }
         $resultFirst=GestionRecette::getRecetteById($arrayDate[0]['id']);
-        $arrRelou=[$arrayDate,$arrayRecette,$resultFirst];
+        $connecter = false;
+        if (isset($_SESSION['id']))
+        {
+            $connecter = true;
+        }
+        $data = GestionRecherche::getRecetteWithDataInEtape("",$connecter);
+        $pagination = GestionDataWeb::getValueDataWeb1();
+        $arrRelou=[$arrayDate,$arrayRecette,$resultFirst,$data,$pagination];
 		$this->_view = new View('Index');
         $this->_view->generate($arrRelou);
 	}

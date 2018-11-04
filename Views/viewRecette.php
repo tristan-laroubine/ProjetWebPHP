@@ -36,7 +36,7 @@ $etapes = $data['etapes'];
         <br/>
 
 
-        <img class="imagerecette" src="/src/img/recette(2).jpg">
+        <img class="imagerecette" src="/img/recette.png">
         <div class="recettestat"><img src="../../img/icons/cook.png" style="width: 50px">
             <p>Temps de préparation : <?php echo $tmpsPrep ?> min</p></div>
         <div class="recettestat">

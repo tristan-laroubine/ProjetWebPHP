@@ -5,12 +5,9 @@ class ControllerRecherche
     private $_recetteModel;
     private $_view;
 
-    public function __construct($url = null)
-    {
 
-    }
 
-    public function recherche($param = [])
+    public function recherche()
     {
         $connecter = false;
         if (isset($_SESSION['id']))
@@ -18,19 +15,20 @@ class ControllerRecherche
             $connecter = true;
         }
 
-        if (empty($param)) {
-            require_once('Views/viewError.php');
-            exit();
-        }
         $motsClee = null;
 
-        if (isset($param[0])) {
-            $motsClee = $param[0];
+        if (isset($_POST['search'])) {
+            $motsClee  = htmlspecialchars(filter_input(INPUT_POST, 'search'));
+
         }
 
-        $data = null;
+        $data = [];
+        $data += ['mot' => $motsClee];
+        $data += ['name' => GestionRecherche::getRecetteWithDataInName($motsClee,$connecter)];
+        $data += ['desc' => GestionRecherche::getRecetteWithDataInDesc($motsClee,$connecter)];
+        $data += ['etape' => GestionRecherche::getRecetteWithDataInEtape($motsClee,$connecter)];
 
-        $this->_view = new View('Gestion');
+        $this->_view = new View('Recherche');
         $this->_view->generate($data);
 
     }

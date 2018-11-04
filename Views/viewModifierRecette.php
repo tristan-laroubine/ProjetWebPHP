@@ -56,7 +56,7 @@ $etapes = $data['etapes'];
                 <a href="#" data-toggle="modal" data-target="#modifStatu" class="btn btn-blue">Modifier</a>
             </center>
         </div>
-        <img class="imagerecette" src="/src/img/recette(2).jpg">
+        <img class="imagerecette" src="/img/recette.png">
         <div class="recettestat"><img src="../../img/icons/cook.png" style="width: 50px">
             <p>Temps de préparation : <?php echo $tmpsPrep ?> min </p><a href="#" data-toggle="modal" data-target="#modifTempsPrep" class="btn btn-blue">Modifier</a></div>
         <div class="recettestat">
