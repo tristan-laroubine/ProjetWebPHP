@@ -23,8 +23,10 @@ class ControllerUtilisateur
 
     private function recette()
     {
+        $data = GestionUser::getUserById($_SESSION['id']);
 
         $this->_view = new View('Utilisateur');
-        $this->_view->generate(array('recette' => 'coucou'));
+        $this->_view->generate($data);
     }
+
 }

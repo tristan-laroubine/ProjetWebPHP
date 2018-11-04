@@ -2,7 +2,7 @@
 require_once('Views/View.php');
 class ControllerFormGestion
 {
-    public function index()
+    public function modif()
     {
         if (!isset($_SESSION['id']))
         {
@@ -14,6 +14,8 @@ class ControllerFormGestion
             header('Location: /viewError/erreur/1');
             exit();
         }
+
+
 
         header('Location: http://tristan-info.alwaysdata.net/Gestion');
         exit();

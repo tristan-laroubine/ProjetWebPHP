@@ -43,6 +43,9 @@
         <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#favoris" aria-expanded="false" aria-controls="favoris">
             Les Favoris
         </button>
+        <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#gestionWEB" aria-expanded="false" aria-controls="gestionWEB">
+            Aspect du Site
+        </button>
 
         <div class="collapse" id="recette">
             <div class="card card-body">
@@ -88,7 +91,7 @@
                                     '<td>'.$row['desLongue'].'</td>'.
                                     '<td>'.$row['etapes'].'</td>'.
                                     '<td>'.$row['date15Burns'].'</td>'.
-                                    '<td><p data-placement="top" data-toggle="tooltip" title="Edit"><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></span></button></p></td>
+                                    '<td><button onclick="modifRecette('.$row['id'].')" class="btn btn-primary btn-xs" ><span class="glyphicon glyphicon-pencil"></span></button></td>
                         <td><p data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></p></td>';
                             }
                             ?>
@@ -154,7 +157,44 @@
             </div>
         </div>
 
+        <div class="collapse" id="ingredients">
+            <div class="card card-body">
+                <div class="col-md-12">
+                    <h4>Table Ingredients :</h4>
+                    <div class="table-responsive">
 
+                        <table id="mytable" class="table table-bordred table-striped">
+
+                            <thead>
+
+                            <th><input type="checkbox" id="checkall" /></th>
+
+                            <th>ID</th>
+                            <th>Nom</th>
+                            </thead>
+                            <tbody>
+                            <?php
+                            $temp = $data['ingredients'];
+                            foreach ($temp as $row){
+                                echo '<tr>'.
+                                    '<td><input type="checkbox" class="checkthis" /></td>'.
+                                    '<td>'.$row['id'].'</td>'.
+                                    '<td>'.$row['name'].'</td>'.
+                                    '<td><p data-placement="top" data-toggle="tooltip" title="Edit"><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></span></button></p></td>
+                        <td><p data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></p></td>';
+                            }
+                            ?>
+
+
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="collapse" id="burns">
             <div class="card card-body">
                 <div class="col-md-12">
@@ -314,45 +354,27 @@
                 </div>
             </div>
         </div>
-        <div class="collapse" id="ingredients">
-            <div class="card card-body">
-                <div class="col-md-12">
-                    <h4>Table Ingredients :</h4>
-                    <div class="table-responsive">
 
-                        <table id="mytable" class="table table-bordred table-striped">
-
-                            <thead>
-
-                            <th><input type="checkbox" id="checkall" /></th>
-
-                            <th>ID</th>
-                            <th>Nom</th>
-                            </thead>
-                            <tbody>
-                            <?php
-                            $temp = $data['ingredients'];
-                            foreach ($temp as $row){
-                                echo '<tr>'.
-                                    '<td><input type="checkbox" class="checkthis" /></td>'.
-                                    '<td>'.$row['id'].'</td>'.
-                                    '<td>'.$row['name'].'</td>'.
-                                    '<td><p data-placement="top" data-toggle="tooltip" title="Edit"><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></span></button></p></td>
-                        <td><p data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></p></td>';
-                            }
-                            ?>
-
-
-
-                            </tbody>
-
-                        </table>
+        <div class="collapse" id="gestionWEB">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+                        <h4 class="modal-title custom_align" id="Heading">Pagination des recettes</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <input class="form-control " type="text" value="<?php echo $data['setup']['paginationIndex']?>">
+                        </div>
 
                     </div>
+                    <div class="modal-footer ">
+                        <button type="button" class="btn btn-warning btn-lg" style="width: 100%;"><span class="glyphicon glyphicon-ok-sign"></span>Modifier</button>
+                    </div>
                 </div>
+                <!-- /.modal-content -->
             </div>
         </div>
-
     </div>
 
 </div>
@@ -428,5 +450,8 @@
 
         $("[data-toggle=tooltip]").tooltip();
     });
+    function modifRecette($idrecette) {
+        document.location.href="http://tristan-info.alwaysdata.net/ModifierRecette/admin/"+$idrecette
+    }
 
 </script>

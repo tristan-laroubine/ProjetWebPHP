@@ -2,13 +2,7 @@
 require_once('Views/View.php');
 class ControllerFormModifierRecette
 {
-    private $_recetteModel;
-    private $_view;
 
-    public function __construct($url = null)
-    {
-
-    }
 
     public function modification($param = [])
     {

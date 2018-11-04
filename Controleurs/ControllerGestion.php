@@ -49,6 +49,11 @@ class ControllerGestion
         $ingredient =  GestionIngredient::getAllIngredients();
         $data += ['ingredients'=>$ingredient];
 
+
+        $tempdata =  GestionDataWeb::getValueDataWeb1();
+        $data += ['setup'=>$tempdata];
+
+
         $this->_view = new View('Gestion');
         $this->_view->generate($data);
     }

@@ -1,9 +1,9 @@
 <?php
 
-require_once 'Modeles/GestionUser.php';
+
 session_start();
 $this->_t = 'Cook And Burn';
-$user = GestionUser::getUserById($_SESSION['id'])
+$user = $data;
 ?>
 
 <div class="likeFooter">
