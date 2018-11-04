@@ -5,44 +5,74 @@
 <html lang="fr">
 
 <head>
-    <meta charset="UTF-8">
+    <meta charset="git puUTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Cardio: Free One Page Template by Luka Cvetinovic</title>
-    <meta name="description" content="Cardio is a free one page template made exclusively for Codrops by Luka Cvetinovic" />
-    <meta name="keywords" content="html template, css, free, one page, gym, fitness, web design" />
-    <meta name="author" content="Luka Cvetinovic for Codrops" />
+    <title>Cook And Burn</title>
+    <meta name="description" content="Cook and burn est un site de partage de recette " />
+    <meta name="keywords" content="html template, css, barbecue, viande, steack, chaleur, saucisse, sauce, grillade, griller, grille, poèle, poale,  web design" />
+    <meta name="author" content="IUT d'Aix en provence" />
     <!-- Favicons (created with http://realfavicongenerator.net/)-->
-    <link rel="apple-touch-icon" sizes="57x57" href="img/favicons/apple-touch-icon-57x57.png">
-    <link rel="apple-touch-icon" sizes="60x60" href="img/favicons/apple-touch-icon-60x60.png">
-    <link rel="icon" type="image/png" href="img/favicons/favicon-32x32.png" sizes="32x32">
-    <link rel="icon" type="image/png" href="img/favicons/favicon-16x16.png" sizes="16x16">
-    <link rel="manifest" href="img/favicons/manifest.json">
-    <link rel="shortcut icon" href="img/favicons/favicon.ico">
+    <link rel="apple-touch-icon" sizes="60x60" href="http://tristan-info.alwaysdata.net/img/favicons/apple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="http://tristan-info.alwaysdata.net/img/favicons/apple-touch-icon-60x60.png">
+    <link rel="icon" type="image/png" href="http://tristan-info.alwaysdata.net/img/favicons/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="http://tristan-info.alwaysdata.net/img/favicons/favicon-16x16.png" sizes="16x16">
+    <link rel="manifest" href="http://tristan-info.alwaysdata.net/img/favicons/manifest.json">
+    <link rel="shortcut icon" href="http://tristan-info.alwaysdata.net/img/favicons/favicon.ico">
     <meta name="msapplication-TileColor" content="#00a8ff">
-    <meta name="msapplication-config" content="img/favicons/browserconfig.xml">
+    <meta name="msapplication-config" content="http://tristan-info.alwaysdata.net/img/favicons/browserconfig.xml">
     <meta name="theme-color" content="#ffffff">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.2/css/bootstrap-select.min.css">
+
     <!-- Normalize -->
-    <link rel="stylesheet" type="text/css" href="css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="http://tristan-info.alwaysdata.net/css/normalize.css">
     <!-- Bootstrap -->
-    <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="http://tristan-info.alwaysdata.net/css/bootstrap.css">
     <!-- Owl -->
-    <link rel="stylesheet" type="text/css" href="css/owl.css">
+    <link rel="stylesheet" type="text/css" href="http://tristan-info.alwaysdata.net/css/owl.css">
     <!-- Animate.css -->
-    <link rel="stylesheet" type="text/css" href="css/animate.css">
+    <link rel="stylesheet" type="text/css" href="http://tristan-info.alwaysdata.net/css/animate.css">
     <!-- Font Awesome -->
-    <link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.1.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="http://tristan-info.alwaysdata.net/fonts/font-awesome-4.1.0/css/font-awesome.min.css">
     <!-- Elegant Icons -->
-    <link rel="stylesheet" type="text/css" href="fonts/eleganticons/et-icons.css">
+    <link rel="stylesheet" type="text/css" href="http://tristan-info.alwaysdata.net/fonts/eleganticons/et-icons.css">
     <!-- Main style -->
-    <link rel="stylesheet" type="text/css" href="css/cardio.css">
+    <link rel="stylesheet" type="text/css" href="http://tristan-info.alwaysdata.net/css/cardio.css">
     <!-- ADD style -->
-    <link rel="stylesheet" type="text/css" href="css/more.css">
+    <link rel="stylesheet" type="text/css" href="http://tristan-info.alwaysdata.net/css/more.css">
+    <style>
+         .search-container {
+            float: right;
+        }
+
+         input[type=text] {
+            padding: 6px;
+            margin-top: 8px;
+            font-size: 17px;
+            border: none;
+        }
+
+         .search-container button {
+            float: right;
+            padding: 6px 10px;
+            margin-top: 8px;
+            margin-right: 16px;
+            background: #ddd;
+            font-size: 17px;
+            border: none;
+            cursor: pointer;
+        }
+
+         .search-container button:hover {
+            background: #ccc;
+        }
+    </style>
 </head>
 
 <body>
 <div class="preloader">
-    <img src="img/loader.gif" alt="Preloader image">
+    <img src="http://tristan-info.alwaysdata.net/img/loader.gif" alt="Preloader image">
 </div>
 <nav class="navbar">
     <div class="container">
@@ -54,25 +84,33 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="/"><img src="img/logo.png" data-active-url="img/logo-active.png" alt=""></a>
+            <a class="navbar-brand" href="/"><img src="http://tristan-info.alwaysdata.net/img/logo.png" data-active-url="http://tristan-info.alwaysdata.net/img/logo-active.png" alt=""></a>
         </div>
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right main-nav">
-                <li><a href="/Recette">Recette</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#team">Team</a></li>
-                <li><a href="#pricing">Pricing</a></li>
+                <li class="search-container">
+                    <form action="/action_page.php">
+                        <input type="text" placeholder="Search.." name="search">
+                        <button type="submit"><i class="fa fa-search"></i></button>
+                    </form>
+                </li>
                 <?php
+                if (isset($_SESSION['grade']) and $_SESSION['grade']>=100)
+                {
+                    echo '<li><a href="/Gestion"  class="btn btn-blue">Panel Admin</a></li>';
+                }
+
                 if (isset($_SESSION['grade']))
                 {
+                    echo '<li><a href="/MesRecettes" >Mes Recettes</a></li>';
+                    echo '<li><a href="/MesFavoris"  >Mes Favoris</a></li>';
                     echo '<li><a href="/Utilisateur">Utilisateur</a></li>';
                     echo '<li><a href="/Deconnection"  class="btn btn-blue">Déconnection</a></li>';
                 }
                 else {
                     echo '<li><a href="#" data-toggle="modal" data-target="#modal1" class="btn btn-blue">Connection</a></li>';
                 }
-
                 ?>
             </ul>
         </div>
@@ -92,17 +130,20 @@ echo $content;
     <div class="modal-dialog">
         <div class="modal-content modal-popup">
             <a href="#" class="close-link"><i class="icon_close_alt2"></i></a>
-            <h3 class="white">Connection</h3>
+            <h3 class="white">Connexion</h3>
             <form action="/FormConnection" class="popup-form" method="post">
-                <input type="text" class="form-control form-white" name="idForm" placeholder="Identifiant">
-                <input type="password" class="form-control form-white" name="mdpForm" placeholder="Mots de Passe">
+                <input type="text" class="form-control form-white" name="idForm" placeholder="Identifiant"
+                       required maxlength="32">
+                <input type="password" class="form-control form-white" name="mdpForm" placeholder="Mots de Passe"
+                       required maxlength="32">
+                <p class="white">Votre identifiant et mot de passe ne doivent pas dépasser 32 caractères</p>
                 <div class="checkbox-holder text-left">
                     <div class="checkbox">
                         <input type="checkbox" value="None" id="squaredOne" name="" />
-                        <label for="squaredOne"><span>I Agree to the <strong>Terms &amp; Conditions</strong></span></label>
+                        <a herf="#" >Mots de passe perdu</a>
                     </div>
                 </div>
-                <button type="submit" class="btn btn-submit">Connection</button>
+                <button type="submit" class="btn btn-submit">Connexion</button>
             </form>
         </div>
     </div>
@@ -111,27 +152,27 @@ echo $content;
     <div class="container">
         <div class="row">
             <div class="col-sm-6 text-center-mobile">
-                <h3 class="white">Reserve a Free Trial Class!</h3>
-                <h5 class="light regular light-white">Shape your body and improve your health.</h5>
-                <a href="#" class="btn btn-blue ripple trial-button">Start Free Trial</a>
+                <h3 class="white">Acheter un barbecue dès maintenant</h3>
+                <h5 class="light regular light-white">Pour des recettes plus folles</h5>
+                <a href="#" class="btn btn-blue ripple trial-button">Acheter dès maintenant</a>
             </div>
             <div class="col-sm-6 text-center-mobile">
-                <h3 class="white">Opening Hours <span class="open-blink"></span></h3>
+                <h3 class="white">Livraison rapide <span class="open-blink"></span></h3>
                 <div class="row opening-hours">
                     <div class="col-sm-6 text-center-mobile">
-                        <h5 class="light-white light">Mon - Fri</h5>
-                        <h3 class="regular white">9:00 - 22:00</h3>
+                        <h5 class="light-white light">France métropolitaine</h5>
+                        <h3 class="regular white">3 à 9 jours</h3>
                     </div>
                     <div class="col-sm-6 text-center-mobile">
-                        <h5 class="light-white light">Sat - Sun</h5>
-                        <h3 class="regular white">10:00 - 18:00</h3>
+                        <h5 class="light-white light">Autres</h5>
+                        <h3 class="regular white">1 à 3 semaines</h3>
                     </div>
                 </div>
             </div>
         </div>
         <div class="row bottom-footer text-center-mobile">
             <div class="col-sm-8">
-                <p>&copy; 2018 TOUS DROITS RÉSERVÉS. Powered by <a href="http://www.phir.co/">PHIr</a> exclusively for <a href="http://tympanus.net/codrops/">Codrops</a></p>
+                <p>&copy; 2018 TOUS DROITS RÉSERVÉS. Powered by TRISTANLEPLUSBEAU</p>
             </div>
             <div class="col-sm-4 text-right text-center-mobile">
                 <ul class="social-footer">
@@ -150,14 +191,16 @@ echo $content;
     <a href="#" class="close-link"><i class="arrow_up"></i></a>
 </div>
 <!-- Scripts -->
-<script src="js/jquery-1.11.1.min.js"></script>
-<script src="js/owl.carousel.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/wow.min.js"></script>
-<script src="js/typewriter.js"></script>
-<script src="js/jquery.onepagenav.js"></script>
-<script src="js/main.js"></script>
-<script src="js/modif.js"></script>
+<script src="http://tristan-info.alwaysdata.net/js/jquery-1.11.1.min.js"></script>
+<script src="http://tristan-info.alwaysdata.net/js/owl.carousel.min.js"></script>
+<script src="http://tristan-info.alwaysdata.net/js/bootstrap.min.js"></script>
+<script src="http://tristan-info.alwaysdata.net/js/wow.min.js"></script>
+<script src="http://tristan-info.alwaysdata.net/js/typewriter.js"></script>
+<script src="http://tristan-info.alwaysdata.net/js/jquery.onepagenav.js"></script>
+<script src="http://tristan-info.alwaysdata.net/js/main.js"></script>
+<script src="http://tristan-info.alwaysdata.net/js/modif.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.2/js/bootstrap-select.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.2/js/i18n/defaults-*.min.js"></script>
 
 </body>
 

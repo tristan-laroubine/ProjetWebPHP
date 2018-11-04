@@ -7,7 +7,11 @@ class ControllerUtilisateur
 
     public function __construct($url = null)
     {
-
+        if (!isset($_SESSION['id']))
+        {
+            header('Location: /viewError/erreur/1');
+            exit();
+        }
         //1 car un seul parametre dans l'URL, dans l'accueil, seulement pour charger le controller
         if(isset($url) && count($url) > 1) {
 

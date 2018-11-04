@@ -39,8 +39,8 @@ $user = GestionUser::getUserById($_SESSION['id'])
                         <img src="img/icons/heart-blue.png" alt="" class="icon">
                 </div>
                     <h4 class="heading">Mes recettes</h4>
-                    <p class="description"> <a href="#" class="btn btn-blue">Voir mes recettes</a> </p>
-                    <p class="description"> <a href="#" data-toggle="modal" data-target="#addRecette" class="btn btn-blue">Ajouter une recette</a> </p>
+                    <p class="description"> <a href="/MesRecettes" class="btn btn-blue">Voir mes recettes</a> </p>
+                    <p class="description"> <a href="/NouvelleRecette" class="btn btn-blue">Ajouter une recette</a> </p>
                 </div>
 
             </div>
@@ -60,10 +60,10 @@ $user = GestionUser::getUserById($_SESSION['id'])
         <div class="modal-dialog">
             <div class="modal-content modal-popup">
                 <h3 class="white">Modifier mes informations</h3>
-                <a href="#" data-toggle="modal" data-target="#modifName" class="btn btn-blue">Modifier mon identifiant</a>
-                <a href="#" data-toggle="modal" data-target="#modifMDP" class="btn btn-blue">Modifier mon mots de passe</a>
-                <a href="#" data-toggle="modal" data-target="#modifEmail" class="btn btn-blue">Modifier mon adresse mail</a>
-                <a href="#" data-toggle="modal" data-target="#modifRecup" class="btn btn-blue">Modifier mon adresse mail de récupération</a>
+                <a href="#" data-toggle="modal" data-target="#modifName" class="btn btn-blue">Modifier mon identifiant</a><br/>
+                <a href="#" data-toggle="modal" data-target="#modifMDP" class="btn btn-blue">Modifier mon mots de passe</a><br/>
+                <a href="#" data-toggle="modal" data-target="#modifEmail" class="btn btn-blue">Modifier mon adresse mail</a><br/>
+                <a href="#" data-toggle="modal" data-target="#RecupUser" class="btn btn-blue">Modifier mon adresse mail de récupération</a><br/>
             </div>
         </div>
     </div>
@@ -72,7 +72,7 @@ $user = GestionUser::getUserById($_SESSION['id'])
     <div class="modal fade" id="modifName" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content modal-popup">
-                <h3 class="white">Connection</h3>
+                <h3 class="white">Identifiant</h3>
                 <form action="/FormUtilisateur" class="popup-form" method="post">
                     <input type="text" class="form-control form-white" name="nameForm" value="<?php echo $user['name'] ?>">
                     <button type="submit" name="modifName" value="yes" class="btn btn-submit">Modifier</button>
@@ -86,7 +86,7 @@ $user = GestionUser::getUserById($_SESSION['id'])
         <div class="modal-dialog">
             <div class="modal-content modal-popup">
 
-                <h3 class="white">Connection</h3>
+                <h3 class="white">Mots de passe</h3>
                 <form action="/FormUtilisateur" class="popup-form" method="post">
                     <input type="password" class="form-control form-white" name="mdpForm" placeholder="***********">
                     <button type="submit" name="modifMDP" value="yes" class="btn btn-submit">Modifier</button>
@@ -100,7 +100,7 @@ $user = GestionUser::getUserById($_SESSION['id'])
         <div class="modal-dialog">
             <div class="modal-content modal-popup">
 
-                <h3 class="white">Connection</h3>
+                <h3 class="white">Adresse mail</h3>
                 <form action="/FormUtilisateur" class="popup-form" method="post">
                     <input type="text" class="form-control form-white" name="emailForm" value="<?php echo $user['email'] ?>">
                     <button type="submit"  name="modifEmail" value="yes" class="btn btn-submit">Modifier</button>
@@ -110,13 +110,13 @@ $user = GestionUser::getUserById($_SESSION['id'])
     </div>
     <!-- /Modifier mon adresse mail / -->
     <!-- Modifier mon adresse mail de récupération -->
-    <div class="modal fade" id="addRecette" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal fade" id="RecupUser" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content modal-popup">
 
-                <h3 class="white">Connection</h3>
-                <form action="../test.php" class="popup-form" method="post">
-                    <input type="text" class="form-control form-white" name="mdp" value="test">
+                <h3 class="white">Mail de récupération</h3>
+                <form action="/FormUtilisateur" class="popup-form" method="post">
+                    <input type="text"  name="recupForm" class="form-control form-white" value="<?php echo $user['recup'] ?>">
                     <button type="submit"  name="modifRecup" value="yes" class="btn btn-submit">Modifier</button>
                 </form>
             </div>

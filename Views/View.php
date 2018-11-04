@@ -13,12 +13,12 @@ class view
     //generation et affichage de la vue
     public function generate($data)
     {
+
         //partie specifique de la vue
         //permet de faire passer la vue qu'on veut afficher avec les données qu'on recupere
         $content = $this->generateFile($this->_file,$data);
-
         // template
-        $view = $this->generateFile('Views/template.php', array('t' => $this->_t, 'content' => $content, 'isLogin' => $_SESSION['id']));
+        $view = $this->generateFile('Views/template.php', array('t' => $this->_t, 'content' => $content, 'recette' => $data));
         echo $view;
 
     }
@@ -26,13 +26,14 @@ class view
     //generation d'un fichier vu et renvoie le resultat produit
     private function generateFile($file, $data)
     {
+
         if(file_exists($file))
         {
+
             extract($data);
             //TEMPORISATION
             //MISE EN TAMPON
             ob_start();
-
             //on inclut le fichier vue
             require $file;
             //renvoie le tempo de sortie
