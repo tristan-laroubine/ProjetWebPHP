@@ -26,23 +26,54 @@ class ControllerFormNouvelleRecette
             exit();
         }
         if (isset($_POST['nameRecette']) and is_string($_POST['nameRecette']) and strlen($_POST['nameRecette']) <= 32) {
+            if(strlen($_POST['nameRecette']) <=0 ){
+                $_SESSION['erreur']="Vous devez donner un nom à votre recette ";
+                header('Location: /NouvelleRecette');
+                exit();
+            }
             if (!GestionRecette::isNameIsUse($_POST['nameRecette']))
+            {
             $nameRecette = htmlspecialchars(filter_input(INPUT_POST, 'nameRecette'));
+            }else
+                {
+                $_SESSION['erreur']="Nom déjà pris";
+                header('Location: /NouvelleRecette');
+                exit();
+            }
         }
 
         if (isset($_POST['tmpsPrepRecette']) and is_string($_POST['tmpsPrepRecette'])) {
-            $tmpsPrepRecette = htmlspecialchars(filter_input(INPUT_POST, 'tmpsPrepRecette'));
+            if ($_POST['tmpsPrepRecette'] > 0) {
+                $tmpsPrepRecette = htmlspecialchars(filter_input(INPUT_POST, 'tmpsPrepRecette'));
+            }else{
+                $_SESSION['erreur']="Le temps de Preparation ne peut pas être inférieur à 0";
+                header('Location: /NouvelleRecette');
+                exit();
+            }
         }
 
         if (isset($_POST['tmps_CuissonRecette']) and is_string($_POST['tmps_CuissonRecette'])) {
+            if($_POST['tmps_CuissonRecette'] > 0){
             $tmps_CuissonRecette = htmlspecialchars(filter_input(INPUT_POST, 'tmps_CuissonRecette'));
+            }else{
+                $_SESSION['erreur']="Le temps de Cuisson ne peut pas être inférieur à 0";
+                header('Location: /NouvelleRecette');
+                exit();
+            }
         }
 
         if (isset($_POST['difficulteRecette']) and is_string($_POST['difficulteRecette']) ) {
+            if($_POST['difficulteRecette']>=1 && $_POST['difficulteRecette']<=10){
             $difficulteRecette = htmlspecialchars(filter_input(INPUT_POST, 'difficulteRecette'));
+            }else{
+                $_SESSION['erreur']="La difficulté doit être compris entre 1 et 10";
+                header('Location: /NouvelleRecette');
+                exit();
+            }
         }
 
         if (isset($_POST['statutRecette']) and is_string($_POST['statutRecette'])) {
+
             if ($_POST['statutRecette'] == 'privee' OR $_POST['statutRecette']=='public' OR $_POST['statutRecette']=='brouillon') {
                 $statutRecette = htmlspecialchars(filter_input(INPUT_POST, 'statutRecette'));
             }
@@ -50,11 +81,25 @@ class ControllerFormNouvelleRecette
         }
 
         if (isset($_POST['desCourte']) and is_string($_POST['desCourte']) and strlen($_POST['desCourte']) <= 65535) {
+            if(!empty($_POST['desCourte'])){
             $desCourte = htmlspecialchars(filter_input(INPUT_POST, 'desCourte'));
+             }else{
+                $_SESSION['erreur']="La description courte doit être remplie";
+                header('Location: /NouvelleRecette');
+                exit();
+            }
         }
 
         if (isset($_POST['desLongue']) and is_string($_POST['desLongue']) and strlen($_POST['desLongue']) <= 65535) {
-            $desLongue = htmlspecialchars(filter_input(INPUT_POST, 'desLongue'));
+            if (!empty($_POST['desLongue'])) {
+
+
+                $desLongue = htmlspecialchars(filter_input(INPUT_POST, 'desLongue'));
+            }else{
+                $_SESSION['erreur']="La description longue doit être remplie";
+                header('Location: /NouvelleRecette');
+                exit();
+            }
         }
 
         if (isset($_POST['etapes']) and is_string($_POST['etapes']) and strlen($_POST['etapes']) <= 65535) {

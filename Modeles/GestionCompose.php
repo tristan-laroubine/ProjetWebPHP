@@ -8,6 +8,11 @@
 require_once 'ConnexionBD.php';
 Class GestionCompose
 {
+    /** ajoute un tuple dans la table COMPOSE de la base de données
+     * @param $idRecette id de la recette,$idIngredient id de l'ingrédient,$quantite quantité de l'ingredient,
+     * $type_quantite type de quantité de l'ingrédient (kg, g, L etc)
+     * @return array
+     */
     public static function addCompose($idRecette,$idIngredient,$quantite,$type_quantite)
     {
         $bdd = getConnextionBD();
@@ -25,6 +30,10 @@ Class GestionCompose
         }
 
     }
+    /** Renvoie un tuple de la table COMPOSE en fonction de l'id de la recette et de l'ingrédient
+     * @param $idIngredient id de l'ingrédient, $idRecette id de la recette
+     * @return array
+     */
     public static function getComposeByIdRAndIdI($idRecette,$idIngredient)
     {
         $bdd = getConnextionBD();
@@ -42,6 +51,10 @@ Class GestionCompose
 
         return $sql->fetch();
     }
+    /** Supprime un tuple de la table COMPOSE en fonction de l'id de la recette et de l'ingrédient
+     * @param $idIngredient id de l'ingrédient, $idRecette id de la recette
+     * @return array
+     */
     public static function deleteIngredientWithIdRAndIdI($idRecette,$idIngredient)
     {
         $bdd = getConnextionBD();
@@ -57,6 +70,10 @@ Class GestionCompose
         }
 
     }
+    /** Renvoie tous tuple de la table COMPOSE en fonction de l'id
+     * @param $id id du tuple
+     * @return array
+     */
     public static function getAllIngredientsById($id)
     {
         $bdd = getConnextionBD();
@@ -72,6 +89,7 @@ Class GestionCompose
 
         return $sql->fetchAll();
     }
+
     public static function showIngredientsByRecette($idR,$nameR)
     {
         $ingredients=GestionCompose::getAllIngredientsById($idR);
@@ -81,6 +99,9 @@ Class GestionCompose
             echo '<li>'.$row['name']. '</li>';
         }
     }
+    /** Supprime un tuple de la table COMPOSE en fonction son id
+     * @param $id du tuple
+     */
     public static function deleteComposeWithIdIngr($id)
     {
         $bdd = getConnextionBD();
@@ -95,6 +116,9 @@ Class GestionCompose
         }
 
     }
+    /** Renvoie tous les tuple de la table COMPOSE
+     * @return array
+     */
     public static function getAllComposes()
     {
         $bdd = getConnextionBD();
@@ -109,5 +133,21 @@ Class GestionCompose
         return $sql->fetchAll();
 
     }
+    public static function deleteComposeWithIds($id_recette,$id_ingredient)
+    {
+        $bdd = getConnextionBD();
+        $sql = $bdd -> prepare( 'DELETE FROM COMPOSE WHERE id_ingredient = ? AND id_recette = ?');
+        $sql->bindValue( 1 , $id_ingredient , PDO::PARAM_INT);
+        $sql->bindValue( 2 , $id_recette , PDO::PARAM_INT);
+        try{
+            $sql->execute();
+        }
+        catch (PDOException $e)
+        {
+            exit();
+        }
+
+    }
+
 
 }

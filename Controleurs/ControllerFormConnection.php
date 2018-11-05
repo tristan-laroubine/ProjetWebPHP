@@ -3,8 +3,7 @@ require_once('Views/View.php');
 require_once ('Modeles/GestionUser.php');
 class ControllerFormConnection
 {
-    private $_recetteModel;
-    private $_view;
+
 
     public function __construct($url = null)
     {
@@ -30,14 +29,48 @@ class ControllerFormConnection
         }
 
 
-        if (GestionUser::isRightIdAndMdp($idForm,$mdpForm)) {
+        if (GestionUser::isRightIdAndMdp($idForm,$mdpForm) AND !empty($idForm) AND !empty($mdpForm)) {
             $user = GestionUser::getUserByNameAndPassword($idForm, $mdpForm);
             session_start();
             $_SESSION['id'] = $user['id'];
             $_SESSION['grade'] = $user['grade'];
         }else{
-            echo 'NOPE';
+            $_SESSION['erreur']=" Identifiant ou mot de passe incorrect";
+            header('Location: /');
+            exit();
         }
+        header('Location: http://tristan-info.alwaysdata.net');
+        exit();
+    }
+
+    private function recupMdp()
+    {
+
+        if (isset($_POST['idForm'])) {
+            if (GestionUser::getUserById($_POST['idForm']) != false) {
+                $idForm = htmlspecialchars(filter_input(INPUT_POST, 'idForm'));
+            }else{
+                $_SESSION['erreur']="L'identifiant n'existe pas";
+                header('Location: /');
+                exit();
+            }
+        }
+
+        if (isset($_POST['recupForm']) and is_string($_POST['recupForm'])) {
+            if (preg_match('/^[a-z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$/', $_POST['recupForm'])) {
+                $recupForm = htmlspecialchars(filter_input(INPUT_POST, 'recupForm'));
+            }else{
+                $_SESSION['erreur']="Email de récupération invalide";
+                header('Location: /');
+                exit();
+            }
+        }
+        $user = GestionUser::getUserById($idForm);
+        if($user['recup'] == $recupForm)
+        {
+            GestionUser::RecupMdpWithEmail($idForm);
+        }
+
         header('Location: http://tristan-info.alwaysdata.net');
         exit();
     }

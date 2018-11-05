@@ -12,14 +12,13 @@ class ControllerAddBurns
 
     public function recette($param = [])
     {
-        if (!isset($_SESSION['id']))
-        {
+        if (!isset($_SESSION['id'])) {
             header('Location: /viewError/erreur/1');
             exit();
         }
 
         if (empty($param)) {
-            require_once('Views/viewError.php');
+            header('Location: /viewError/erreur/2');
             exit();
         }
 
@@ -28,15 +27,14 @@ class ControllerAddBurns
         if (isset($param[0])) {
             $idRecette = $param[0];
         }
-        if (GestionRecette::isPutBurns($_SESSION['id'],$idRecette) == false)
-        {
-            GestionRecette::addBurns($_SESSION['id'],$idRecette);
+        if (GestionRecette::isPutBurns($_SESSION['id'], $idRecette) == false) {
+            GestionRecette::addBurns( $idRecette,$_SESSION['id']);
+        } else {
+            $_SESSION['erreur'] = "Vous avez déja mis un burn à cette recette";
+            header('Location: http://tristan-info.alwaysdata.net/Recette/recette/' . $idRecette);
+            exit();
         }
-        else
-        {
-            echo '<script>alert("Vous avez déja mis un burn !")</script>';
-        }
-        header('Location: /Recette/recette/'.$idRecette);
+        header('Location: /Recette/recette/' . $idRecette);
         exit();
     }
 

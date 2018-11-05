@@ -11,10 +11,18 @@ require_once 'Modeles/GestionIngredient.php';
             header('Location: /viewError/erreur/1');
             exit();
         }
+
 ?>
 <div class="likeFooter">
     <br/>
 </div>
+<?php
+if(isset($_SESSION['erreur']))
+{
+    echo'<h3 style="color: red;">'. $_SESSION['erreur'].'</h3>';
+    unset($_SESSION['erreur']);
+}
+?>
 <div class="modal-dialog">
     <div class="modal-content modal-popup">
         <h3 class="white">Création d'une nouvelle recette</h3>

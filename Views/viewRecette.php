@@ -46,6 +46,13 @@ $etapes = $data['etapes'];
             <p>: <?php echo $burns ?> burns</p></div>
         <div class="recettestat"><img src="../../img/icons/cooktime.png" style="width: 50px">
             <p>Temps de cuisson : <?php echo $tmps_cuisson ?> min</p></div>
+        <?php
+        if(isset($_SESSION['erreur']))
+        {
+            echo'<p style="color: red;">'. $_SESSION['erreur'].'</p>';
+            unset($_SESSION['erreur']);
+        }
+        ?>
         <div class="ingredient">
             <h3>Ingrédients pour 1 personne :</h3>
             <ul class="list-group">

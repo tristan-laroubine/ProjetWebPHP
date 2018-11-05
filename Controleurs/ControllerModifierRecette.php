@@ -16,10 +16,9 @@ class ControllerModifierRecette
         $idRecette = (int)$idRecette;
 
         $recette = GestionRecette::getRecetteById($idRecette);
-        if (!GestionUser::isUserCreateThisRecette($_SESSION['id'],$idRecette))
+        if (!GestionUser::isUserCreateThisRecette($_SESSION['id'],$idRecette) AND $_SESSION['grade'] < 100)
         {
-            var_dump('oups');die;
-            header('Location: /viewError/erreur/2');
+            header('Location: /viewError/erreur/3');
             exit();
         }
         if (GestionFavoris::getFavoriByIdUAndIdR($_SESSION['id'],$idRecette)!= false)

@@ -9,6 +9,10 @@ require_once 'Modeles/ConnexionBD.php';
 
 Class GestionIngredient
 {
+
+    /** ajoute un ingrédient dans la table INGREDIENT de la base de données
+     * @param $name nom de l'ingrédient
+     */
     public static function addIngredient($name)
     {
         $bdd = getConnextionBD();
@@ -23,6 +27,10 @@ Class GestionIngredient
         }
 
     }
+
+    /** Supprime un ingrédient de la base de données en fonction de son id
+     * @param $id id de l'ingrédient
+     */
     public static function deleteIngredientWithId($id)
     {
         $bdd = getConnextionBD();
@@ -46,7 +54,10 @@ Class GestionIngredient
         }
 
     }
-
+    /** renvoie un ingrédient en fonction de son nom
+     * @param $name nom de l'ingrédient
+     * @return array
+     */
     public static function getIngredientByName($name)
     {
         $bdd = getConnextionBD();
@@ -54,7 +65,6 @@ Class GestionIngredient
         $sql->bindValue( 1 , $name , PDO::PARAM_STR);
         try{
             $sql->execute();
-            $sql->rowCount() or die('Pas de résultat -getIngredientByName'.PHP_EOL);
         }
         catch (PDOException $e)
         {
@@ -63,6 +73,10 @@ Class GestionIngredient
 
         return $sql->fetch();
     }
+    /** Renvoie l'id d'un ingrédient en fonction de son nom
+     * @param $name nom de l'ingrédient
+     * @return array
+     */
     public static function getIdByName($name)
     {
         $bdd = getConnextionBD();
@@ -79,6 +93,10 @@ Class GestionIngredient
 
         return $sql->fetch()['id'];
     }
+    /** Renvoie un ingrédient en fonction de son id
+     * @param $id id de l'ingrédient
+     * @return array
+     */
     public static function getIngredientById($id)
     {
         $bdd = getConnextionBD();
@@ -95,6 +113,9 @@ Class GestionIngredient
 
         return $sql->fetch();
     }
+    /** Renvoie tous les ingrédients contenus dans la table INGREDIENT de la base de données
+     * @return array
+     */
     public static function getAllIngredients()
     {
         $bdd = getConnextionBD();
@@ -110,6 +131,10 @@ Class GestionIngredient
 
         return $sql->fetchAll();
     }
+
+    /** Modifie le nom d'un ingrédient en fonction de son id
+     * @param $name nom de l'ingrédient, $id id de l'ingrédient
+     */
     public static function setNameById($id,$name)
     {
         $bdd = getConnextionBD();

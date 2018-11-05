@@ -22,6 +22,19 @@ class GestionDataWeb
         }
         return $sql->fetch();
     }
+    public static function setPagination($nbOfPagination)
+    {
+        $bdd = getConnextionBD();
+        $sql =  $bdd -> prepare('UPDATE DataWeb SET paginationIndex=? WHERE id=1');
+        $sql->bindValue( 1 , $nbOfPagination, PDO::PARAM_INT );
+        try{
+            $sql->execute();
+        }catch (PDOException $e)
+        {
+            exit();
+        }
+
+    }
 
 }
 

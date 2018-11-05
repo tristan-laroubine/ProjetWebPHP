@@ -14,7 +14,14 @@ $user = $data;
     <div class="container">
         <div class="row text-center title">
             <h2>Services</h2>
-            <h4 class="light muted">Achieve the best results with our wide variety of training options!</h4>
+            <h4 class="light muted">Gestion des différentres données de l'utilisateur !</h4>
+            <?php
+            if(isset($_SESSION['erreur']))
+            {
+                echo'<h3 style="color: red;">'. $_SESSION['erreur'].'</h3>';
+                unset($_SESSION['erreur']);
+            }
+            ?>
         </div>
         <div class="row services">
             <div class="col-md-4">
@@ -50,7 +57,7 @@ $user = $data;
                         <img src="img/icons/heart-blue.png" alt="" class="icon">
                     </div>
                     <h4 class="heading">Mes favoris</h4>
-                    <p class="description"> <a href="#" class="btn btn-blue">Voir mes favoris</a> </p>
+                    <p class="description"> <a href="/MesFavoris" class="btn btn-blue">Voir mes favoris</a> </p>
                 </div>
             </div>
         </div>
@@ -102,7 +109,7 @@ $user = $data;
 
                 <h3 class="white">Adresse mail</h3>
                 <form action="/FormUtilisateur" class="popup-form" method="post">
-                    <input type="text" class="form-control form-white" name="emailForm" value="<?php echo $user['email'] ?>">
+                    <input type="email" class="form-control form-white" name="emailForm" value="<?php echo $user['email'] ?>">
                     <button type="submit"  name="modifEmail" value="yes" class="btn btn-submit">Modifier</button>
                 </form>
             </div>
@@ -116,7 +123,7 @@ $user = $data;
 
                 <h3 class="white">Mail de récupération</h3>
                 <form action="/FormUtilisateur" class="popup-form" method="post">
-                    <input type="text"  name="recupForm" class="form-control form-white" value="<?php echo $user['recup'] ?>">
+                    <input type="email"  name="recupForm" class="form-control form-white" value="<?php echo $user['recup'] ?>">
                     <button type="submit"  name="modifRecup" value="yes" class="btn btn-submit">Modifier</button>
                 </form>
             </div>

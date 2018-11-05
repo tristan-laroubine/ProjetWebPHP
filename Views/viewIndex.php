@@ -20,7 +20,22 @@ echo '
     </div>
 </header>
 ';
-
+?>
+<br/>
+<br/>
+<br/>
+<div class="container" ><p> Nous avons réalisé un site web de partage de recettes de barbecue pour l'entreprise Cook & Burn. Il possède plusieurs
+    fonctionnalités :
+    - Pour un visiteur ne possédant pas de compte sur le site, il peut voir la recette à la une étant celle ayant obtenu
+    15 Burns (equivalent de likes) le plus récemment ainsi que naviguer sur la page d'accueil.
+    - Un utlisateur ayant un compte peut quant à lui se connecter au site et si jamais il a oublié on mot de passe en
+    demander un nouveau via un système de mot de passe oublié lui envoyant un mail contenant son nouveau mot de passe.
+    Une fois connecté, l'utilisateur peut accéder à son profil sur lequel il peut accéder à ses informations
+    personnelles fournies lors de la création de son compte qu'il peut modifier. Il peut aussi accéder aux recettes
+    qu'il a créées pour les modifer voire les supprimer ou en créer de nouvelles qui peuvent être publiques privées ou
+    brouillon. Enfin un utilisateur peut accéder aux recettes des autres utilisateurs qu'il peut ajouter à ses favoris
+    et ainsi la retrouver plus facilement dans son profil via un onglet mes favoris.</p></div>
+<?php
 $arrayRecette=$data[1];
 $resultFirst=$arrayRecette[0];
 
@@ -90,7 +105,7 @@ echo '
     echo '</span>';
         ?>
 
-
+ 
         <?php
         ++$nbOfPage;
         $compt = $compt + $pagination ;

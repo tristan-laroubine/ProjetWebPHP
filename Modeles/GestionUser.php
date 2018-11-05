@@ -19,7 +19,6 @@ class GestionUser
         $sql->bindValue( 1 , $id , PDO::PARAM_INT);
         try{
             $sql->execute();
-            $sql->rowCount() or die('Pas de résultat -getUserById'.PHP_EOL);
         }
         catch (PDOException $e)
         {
@@ -239,7 +238,7 @@ class GestionUser
     }
 
 
-    public function RecupMdpWithEmail($id)
+    public static function RecupMdpWithEmail($id)
     {
         $newmdp = uniqid ("" ,false);
 // Plusieurs destinataires
@@ -346,6 +345,25 @@ class GestionUser
             exit();
         }
 
+    }
+    public static function isNameIsUse($name)
+    {
+        $bdd = getConnextionBD();
+        $sql = $bdd -> prepare( 'SELECT * FROM USER WHERE name = ?');
+        $sql->bindValue( 1 , $name , PDO::PARAM_STR);
+        try{
+            $sql->execute();
+        }
+        catch (PDOException $e)
+        {
+            exit();
+        }
 
+
+        if ($sql->fetch() != null)
+        {
+            return true;
+        }
+        return false;
     }
 }

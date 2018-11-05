@@ -2,7 +2,6 @@
 require_once('Views/View.php');
 class ControllerUtilisateur
 {
-    private $_recetteModel;
     private $_view;
 
     public function __construct($url = null)
@@ -28,5 +27,6 @@ class ControllerUtilisateur
         $this->_view = new View('Utilisateur');
         $this->_view->generate($data);
     }
+
 
 }

@@ -140,18 +140,36 @@ echo $content;
             <a href="#" class="close-link"><i class="icon_close_alt2"></i></a>
             <h3 class="white">Connexion</h3>
             <form action="/FormConnection" class="popup-form" method="post">
+                <?php
+                if(isset($_SESSION['erreur']))
+                {
+                    echo'<p style="color: red;">'. $_SESSION['erreur'].'</p>';
+                    unset($_SESSION['erreur']);
+                }
+                ?>
                 <input type="text" class="form-control form-white" name="idForm" placeholder="Identifiant"
                        required maxlength="32">
                 <input type="password" class="form-control form-white" name="mdpForm" placeholder="Mots de Passe"
                        required maxlength="32">
                 <p class="white">Votre identifiant et mot de passe ne doivent pas dépasser 32 caractères</p>
-                <div class="checkbox-holder text-left">
-                    <div class="checkbox">
-                        <input type="checkbox" value="None" id="squaredOne" name="" />
-                        <a herf="#" >Mots de passe perdu</a>
-                    </div>
-                </div>
+                    <a href="#" data-toggle="modal" class="btn btn-blue" data-target="#recupMdp">Mots de passe perdu ?</a>
+
                 <button type="submit" class="btn btn-submit">Connexion</button>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="recupMdp" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content modal-popup">
+            <a href="#" class="close-link"><i class="icon_close_alt2"></i></a>
+            <h3 class="white">Récupération de mots de passe</h3>
+            <form action="/FormConnection/recupMdp" class="popup-form" method="post">
+                <input type="text" class="form-control form-white" name="idForm" placeholder="Identifiant"
+                       required maxlength="32">
+                <input type="text" class="form-control form-white" name="recupForm" placeholder="Email de récupération"
+                       required>
+                <button type="submit" class="btn btn-submit">Envoyer</button>
             </form>
         </div>
     </div>
@@ -180,7 +198,7 @@ echo $content;
         </div>
         <div class="row bottom-footer text-center-mobile">
             <div class="col-sm-8">
-                <p>&copy; 2018 TOUS DROITS RÉSERVÉS. Powered by TRISTANLEPLUSBEAU</p>
+                <p>&copy; 2018 TOUS DROITS RÉSERVÉS. Powered by PHIr</p>
             </div>
             <div class="col-sm-4 text-right text-center-mobile">
                 <ul class="social-footer">

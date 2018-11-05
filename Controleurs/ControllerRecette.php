@@ -19,7 +19,7 @@ class ControllerRecette
     {
 
         if (empty($param)) {
-            require_once('Views/viewError.php');
+            header('Location: /viewError/erreur/2');
             exit();
         }
 
@@ -28,17 +28,22 @@ class ControllerRecette
         if (isset($param[0])) {
             $idRecette = $param[0];
         }
+//        var_dump(GestionRecette::isPrivateById($idRecette));die;
+        if(GestionRecette::isPrivateById($idRecette) AND !GestionUser::isUserCreateThisRecette($_SESSION['id'],$idRecette)){
+            header('Location: /viewError/erreur/3');
+            exit();
+        }
 
 
         $recette = GestionRecette::getRecetteById($idRecette);
         if (!isset($_SESSION['id']) and $recette['burns']< 10)
         {
-            header('Location: /viewError/erreur/1');
+            header('Location: /viewError/erreur/2');
             exit();
         }
         if ($recette == false )
         {
-            require_once('Views/viewError.php');
+            header('Location: /viewError/erreur/2');
             exit();
         }
         if (isset($_SESSION['id']))

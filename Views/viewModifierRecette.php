@@ -10,8 +10,14 @@ $desLongue = $data['desLongue'];
 $etapes = $data['etapes'];
 ?>
 <div class="recettebody">
+
     <div class="recettearea">
         <?php
+        if(isset($_SESSION['erreur']))
+        {
+            echo'<h3 style="color: red;">'. $_SESSION['erreur'].'</h3>';
+            unset($_SESSION['erreur']);
+        }
         if ($data['favori']== 'no')
         {
             echo '<a class="favbutton" href="/AddFavoris/recette/'.$id.'">Ajoutez à mes favoris</a>';

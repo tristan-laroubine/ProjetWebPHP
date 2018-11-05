@@ -22,7 +22,7 @@ class ControllerAddFavoris
         }
 
         if (empty($param)) {
-            require_once('Views/viewError.php');
+            header('Location: /viewError/erreur/2');
             exit();
         }
 
@@ -47,7 +47,7 @@ class ControllerAddFavoris
         }
 
         if (empty($param)) {
-            require_once('Views/viewError.php');
+            header('Location: /viewError/erreur/2');
             exit();
         }
 

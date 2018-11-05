@@ -22,5 +22,9 @@ if ($data['erreur']==2)
 {
     echo "<h2>Page introuvable</h2>";
 }
+if ($data['erreur']==3)
+{
+    echo "<h2>Vous ne pouvez pas acceder à cette page</h2>";
+}
     ?>
     </div>

@@ -9,6 +9,12 @@ require_once 'ConnexionBD.php';
 
 class GestionRecette
 {
+    /** Ajoute une recette à la liste des recettes de la base de données
+     * @param $name nom de la recette, $tmpsPrep temps de préparation des ingrédients de la recette,
+     * $tmps_cuisson temps de cuisson de la recette, $difficulté difficulté, $burns nombre de burns de la recette,
+     * $statut statut de la recette (publique, privée etc), $descCourte courte description de la recette,
+     * $descLongue description plus longue de la recette, $etapes étapes que comporte la recette
+     */
     public static function addRecette($name, $tmpsPrep, $tmps_cuisson, $difficulte, $burns,$statut,$desCourte,$descLongue,$etapes)
     {
         $bdd = getConnextionBD();
@@ -31,10 +37,13 @@ class GestionRecette
         }
 
     }
+    /** Supprime une recette en fonction de l'id fourni
+     * @param $id id de la recette
+     */
     public static function deleteRecetteWithId($id)
     {
         $bdd = getConnextionBD();
-        $sql = $bdd -> prepare( 'DELETE FROM RECETTE WHERE id = ?');
+        $sql = $bdd -> prepare( 'DELETE FROM RECETTE WHERE id = ?;');
         $sql->bindValue( 1 , $id , PDO::PARAM_INT);
         try{
             $sql->execute();
@@ -43,7 +52,7 @@ class GestionRecette
         {
             exit();
         }
-        $sql1 = $bdd -> prepare( 'DELETE FROM COMPOSE WHERE id_recette = ?');
+        $sql1 = $bdd -> prepare( 'DELETE FROM COMPOSE WHERE id_recette = ?;');
         $sql1->bindValue( 1 , $id , PDO::PARAM_INT);
         try{
             $sql1->execute();
@@ -52,7 +61,7 @@ class GestionRecette
         {
             exit();
         }
-        $sql2 = $bdd -> prepare( 'DELETE FROM FAVORIS WHERE id_recette = ?');
+        $sql2 = $bdd -> prepare( 'DELETE FROM FAVORIS WHERE id_recette = ?;');
         $sql2->bindValue( 1 , $id , PDO::PARAM_INT);
         try{
             $sql2->execute();
@@ -61,7 +70,7 @@ class GestionRecette
         {
             exit();
         }
-        $sql3 = $bdd -> prepare( 'DELETE FROM CREE WHERE idRecette = ?');
+        $sql3 = $bdd -> prepare( 'DELETE FROM CREE WHERE idRecette = ?;');
         $sql3->bindValue( 1 , $id , PDO::PARAM_INT);
         try{
             $sql3->execute();
@@ -74,6 +83,11 @@ class GestionRecette
 
     }
 
+
+    /** Récupère une recette en fonction de son id
+     * @param $id id de la recette
+     * @return array
+     */
     public static function getRecetteById($id)
     {
         $bdd = getConnextionBD();
@@ -89,10 +103,14 @@ class GestionRecette
 
         return $sql->fetch();
     }
+    /** Renvoie une recette en fonction de son nom
+     * @param $name nom de la recette
+     * @return array
+     */
     public static function getRecetteByName($name)
     {
         $bdd = getConnextionBD();
-        $sql = $bdd -> prepare( 'SELECT * FROM RECETTE WHERE name= ?');
+        $sql = $bdd -> prepare( 'SELECT * FROM RECETTE WHERE name= ?;');
         $sql->bindValue( 1 , $name , PDO::PARAM_STR);
         try {
             $sql->execute();
@@ -104,10 +122,14 @@ class GestionRecette
 
         return $sql->fetch();
     }
+    /** Renvoie l'id de la recette eb fonction de son nom fourni
+     * @param $name nom de la recette
+     * @return array
+     */
     public static function getIdByName($name)
     {
         $bdd = getConnextionBD();
-        $sql = $bdd -> prepare( 'SELECT id FROM RECETTE WHERE name= ?');
+        $sql = $bdd -> prepare( 'SELECT id FROM RECETTE WHERE name= ?;');
         $sql->bindValue( 1 , $name , PDO::PARAM_STR);
         try{
             $sql->execute();
@@ -120,50 +142,46 @@ class GestionRecette
 
         return $sql->fetch()['id'];
     }
-
+    /** Ajoute un burn
+     * @param $id id de la recette, $id_user id de l'user ayant laissé le burn
+     */
     public static function addBurns($id,$id_user)
     {
         $bdd = getConnextionBD();
-        $sql =  $bdd -> prepare ('UPDATE RECETTE SET burns=burns+1 WHERE id = ?;');
-        $sql->bindValue( 1 , $id , PDO::PARAM_INT);
-        try{
+        $sql = $bdd->prepare('UPDATE RECETTE SET burns=burns+1 WHERE id = ?;');
+        $sql->bindValue(1, $id, PDO::PARAM_INT);
+        try {
             $sql->execute();
-        }
-        catch (PDOException $e)
-        {
+        } catch (PDOException $e) {
             exit();
         }
 
-        $sql1 =  $bdd -> prepare ('INSERT INTO BURNS(id_recette,id_user) VALUES (?;?)');
-        $sql1->bindValue( 1 , $id , PDO::PARAM_INT);
-        $sql1->bindValue( 2 , $id_user , PDO::PARAM_INT);
-        try{
+        $sql1 = $bdd->prepare('INSERT INTO BURNS(id_recette,id_user) VALUES (?,?);');
+        $sql1->bindValue(1, $id, PDO::PARAM_INT);
+        $sql1->bindValue(2, $id_user, PDO::PARAM_INT);
+        try {
             $sql1->execute();
-        }
-        catch (PDOException $e)
-        {
+        } catch (PDOException $e) {
             exit();
         }
 
-        $sql2 = $bdd -> prepare('SELECT burns FROM RECETTE WHERE id = ? ;');
-        $sql2->bindValue( 1 , $id , PDO::PARAM_INT);
-        try{
+        $sql2 = $bdd->prepare('SELECT * FROM RECETTE WHERE id = ? ;');
+        $sql2->bindValue(1, $id, PDO::PARAM_INT);
+        try {
             $sql2->execute();
-            $sql2->rowCount() or die('Pas de résultat -addBurns'.PHP_EOL);
-        }
-        catch (PDOException $e)
-        {
+        } catch (PDOException $e) {
             exit();
         }
 
-        $result= $sql2->fetch()['burns'];
-        echo $result;
-        if($result==15)
-        {
+        $result = $sql2->fetch()['burns'];
+        if ($result == 15) {
             echo 'ok';
-            self::setDate12BurnsById($id,date("Y-m-d"));
+            self::setDate12BurnsById($id, date("Y-m-d"));
         }
     }
+    /** Modifie la date à laquelle une recette a obtenu 15 burns
+     * @param $id id de la recette, $date date à laquelle la recette a obtenu 15 burns
+     */
     public static function setDate12BurnsById($id,$date)
     {
         $bdd = getConnextionBD();
@@ -180,6 +198,9 @@ class GestionRecette
 
     }
 
+    /** Modifie le nom d'une recette en fonction de son id
+     * @param $id id de la recette, $name, nom de la recette
+     */
     public static function setNameById($id,$name)
     {
         $bdd = getConnextionBD();
@@ -195,6 +216,9 @@ class GestionRecette
         }
 
     }
+    /** Modifie le temps de preparation d'une recette en fonction de son id
+     * @param $id id de la recette, $tmpsPrep temps de préparation à la recette
+     */
     public static function setTmpsPrepById($id,$tmpsPrep)
     {
         $bdd = getConnextionBD();
@@ -210,6 +234,9 @@ class GestionRecette
         }
 
     }
+    /** Modifie le temps de cuisson d'une recette en fonction de son id
+     * @param $id id de la recette, $tmps_cuisson temps de cuisson de la recette
+     */
     public static function setTmps_cuissonById($id,$tmps_cuisson)
     {
         $bdd = getConnextionBD();
@@ -225,6 +252,9 @@ class GestionRecette
         }
 
     }
+    /** Modifie la difficulté d'une recette en fonction de son id
+     * @param $id id de la recette, $difficulté difficulté de la recette
+     */
     public static function setDifficulteById($id,$difficulte)
     {
         $bdd = getConnextionBD();
@@ -240,6 +270,9 @@ class GestionRecette
         }
 
     }
+    /** Modifie le nombre de burns d'une recette en fonction de son id
+     * @param $id id de la recette, $burns nombre de burns de la recette
+     */
     public static function setBurnsById($id,$burns)
     {
         $bdd = getConnextionBD();
@@ -255,6 +288,10 @@ class GestionRecette
         }
 
     }
+
+    /** Modifie le statut d'une recette en fonction de son id
+     * @param $id id de la recette, $statut statut de la recette (public, privé etc)
+     */
     public static function setStatutByID($id,$statut)
     {
         $bdd = getConnextionBD();
@@ -270,6 +307,9 @@ class GestionRecette
         }
 
     }
+    /** Modifie la description courte d'une recette en fonction de son id
+     * @param $id id de la recette, $desCourte description courte de la recette
+     */
     public static function setDesCourteById($id,$desCourte)
     {
         $bdd = getConnextionBD();
@@ -285,6 +325,9 @@ class GestionRecette
         }
 
     }
+    /** Modifie la description longue d'une recette en fonction de son id
+     * @param $id id de la recette, $DescLongue description longue de la recette
+     */
     public static function setDesLongueById($id,$desLongue)
     {
         $bdd = getConnextionBD();
@@ -300,6 +343,9 @@ class GestionRecette
         }
 
     }
+    /** Modifie les étapes que comporte une recette en fonction de son id
+     * @param $id id de la recette, $etapes etapes que comporte la recette
+     */
     public static function setEtapesById($id,$etapes)
     {
         $bdd = getConnextionBD();
@@ -313,8 +359,11 @@ class GestionRecette
         {
             exit();
         }
-
     }
+    /** Renvoie tous les ingredients utilisés dans une recette en fonction de son nom
+     * @param $name nom de la recette
+     * @return array
+     */
     public static function getAllIngredientsByName($name)
     {
         $bdd = getConnextionBD();
@@ -332,6 +381,9 @@ class GestionRecette
 
         return $sql->fetchAll();
     }
+    /** Renvoie les recettes dans l'ordre decroissant des dates pour lesquelles elles ont obtenu 15 burns
+     * @return array
+     */
     public static function getRecetteByOrderDate()
     {
         $bdd = getConnextionBD();
@@ -347,6 +399,11 @@ class GestionRecette
 
         return $sql->fetchAll();
     }
+
+    /** Renvoie vrai ou faux selon si le nom d'une recette est déjà utilisé ou non
+     * @param $name nom de la recette
+     * @return boolean
+     */
     public static function isNameIsUse($name)
     {
         $bdd = getConnextionBD();
@@ -367,6 +424,11 @@ class GestionRecette
         }
         return false;
     }
+
+    /** Insère dans la table CREE la recette et l'utilisateur qui l'a créée
+     * @param $idRecette id de la recette, $idUser id de l'utilisateur ayant crée la recette
+     * @return array
+     */
     public static function addCREE($idUser, $idRecette)
     {
         $bdd = getConnextionBD();
@@ -382,6 +444,11 @@ class GestionRecette
         }
 
     }
+
+    /** Renvoie toutes les recettes créées par un utilisateur en focntion de son id
+     * @param $idUser id de l'utilisateur
+     * @return array
+     */
     public static function getIdsRecettesCREE($idUser)
     {
         $bdd = getConnextionBD();
@@ -397,6 +464,10 @@ class GestionRecette
 
         return $sql->fetchAll();
     }
+
+    /** Renvoie toutes les recettes contenues dans la base de données
+     * @return array
+     */
     public static function getAllRecette()
     {
         $bdd = getConnextionBD();
@@ -411,6 +482,11 @@ class GestionRecette
 
         return $sql->fetchAll();
     }
+
+    /** Renvoie vrai ou faux selon si un utilisateur a laissé un burn à une recette en fonction de son id
+     * @param $idUser id de l'utilisateur, $idRecette id de la recette
+     * @return array
+     */
     public static function isPutBurns($idUser,$idRecette)
     {
         $bdd = getConnextionBD();
@@ -426,6 +502,10 @@ class GestionRecette
         }
         return $sql->fetch();
     }
+
+    /** Renvoie tous les tuples de la table BURNS de la base de données
+     * @return array
+     */
     public static function getAllBurns()
     {
         $bdd = getConnextionBD();
@@ -440,6 +520,10 @@ class GestionRecette
         return ($sql->fetchAll());
     }
 
+
+    /** Renvoie tous les tuples de la table CREE de la base de données
+     * @return array
+     */
     public static function getAllCrees()
     {
         $bdd = getConnextionBD();
@@ -453,7 +537,67 @@ class GestionRecette
         }
         return ($sql->fetchAll());
     }
+    public static function isPrivateById($id){
+        $bdd = getConnextionBD();
+        $sql = $bdd -> prepare( 'SELECT * FROM RECETTE WHERE id = ? AND statut = "privee" ;');
+        $sql->bindValue( 1 , $id , PDO::PARAM_INT);
+        try{
+            $sql->execute();
+        }
+        catch (PDOException $e)
+        {
+            exit();
+        }
 
+
+        if ($sql->fetch() != null)
+        {
+            return true;
+        }
+        return false;
+    }
+    public static function setIdUserById($id_user,$id)
+    {
+        $bdd = getConnextionBD();
+        $sql =  $bdd -> prepare ('UPDATE CREE SET idUser = ? WHERE id = ?;');
+        $sql->bindValue( 1 , $id_user,PDO::PARAM_INT );
+        $sql->bindValue( 2 , $id,PDO::PARAM_INT );
+        try{
+            $sql->execute();
+        }
+        catch (PDOException $e)
+        {
+            exit();
+        }
+
+    }
+    public static function setIdRecetteById($id_recette,$id)
+    {
+        $bdd = getConnextionBD();
+        $sql =  $bdd -> prepare ('UPDATE CREE SET idRecette = ? WHERE id = ?;');
+        $sql->bindValue( 1 , $id_recette,PDO::PARAM_INT );
+        $sql->bindValue( 2 , $id,PDO::PARAM_INT );
+        try{
+            $sql->execute();
+        }
+        catch (PDOException $e)
+        {
+            exit();
+        }
+
+    }
+    public static function deleteCreeById($id){
+        $bdd = getConnextionBD();
+        $sql =  $bdd -> prepare ('DELETE FROM CREE WHERE id = ?;');
+        $sql->bindValue( 1 , $id,PDO::PARAM_INT );
+        try{
+            $sql->execute();
+        }
+        catch (PDOException $e)
+        {
+            exit();
+        }
+    }
 }
 
 
